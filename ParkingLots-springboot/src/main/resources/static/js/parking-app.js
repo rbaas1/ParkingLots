@@ -21,10 +21,13 @@ app.config(function($routeProvider) {
 
 app.controller("addCarCtrl", function ($scope, $http) {
 
+    $scope.msg = "";
+
     $scope.save = function ()  {
         console.log('saving');
         $http.post('new/car', angular.toJson($scope.car)).then(function () {
-            	console.log('saved!');
+            	console.log('saved!' + $scope.car.licensePlate);
+            	$scope.msg = "Added " + $scope.car.licensePlate;
             });
       };
 });
