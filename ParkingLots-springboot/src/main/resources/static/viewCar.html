@@ -1,0 +1,23 @@
+<h1>View a car's details from the database</h1>
+<h3>This will become a form to search cars in the database</h3>
+
+<form>
+    <table>
+        <tr>
+            <th>Search by license plate</th>
+        </tr>
+        <tr>
+            <td><input type="text" ng-model="licensePlate" id="searchPlate"></td>
+        </tr>
+    </table>
+    <button type="submit" ng-click="searchByPlate(licensePlate)">Search Car</button>
+</form>
+
+<div>
+    <table>
+        <tr><th>ID</th><th>License plate</th><th>Colour</th><t</tr>
+        <tr ng-repeat="car in cars">
+            <td>{{car.id}}</td><td>{{car.licensePlate}}</td><td>{{car.colour}}</td>
+        </tr>
+    </table>
+</div>
