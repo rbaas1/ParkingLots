@@ -4,8 +4,6 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
-import { BikesComponent } from './bikes/bikes.component';
-import { BikeService } from './bike.service';
 
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { CarsComponent } from './cars/cars.component';
@@ -24,11 +22,10 @@ import { HomeComponent } from './home/home.component';
   ],
   declarations: [
     AppComponent,
-    BikesComponent,
     CarsComponent,
     HomeComponent
   ],
   bootstrap: [AppComponent],
-  providers: [BikeService, CarService],
+  providers: [CarService],
 })
 export class AppModule { }

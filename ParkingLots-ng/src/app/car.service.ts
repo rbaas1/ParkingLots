@@ -16,7 +16,7 @@ export class CarService {
   }
 
 
-  private carsUrl = '/api/allCars';
+  private carsUrl = '/api/car/all';
 
   getCars(): Promise<Car[]> {
     return this.http.get(this.carsUrl)
