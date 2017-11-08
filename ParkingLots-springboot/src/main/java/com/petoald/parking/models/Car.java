@@ -8,7 +8,7 @@ public class Car {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private String licensePlate;
-    private String colour;
+    private String colour = "#000000";
 
     public Car() {
     }
