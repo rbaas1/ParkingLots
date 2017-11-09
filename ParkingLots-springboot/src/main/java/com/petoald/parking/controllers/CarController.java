@@ -21,7 +21,7 @@ public class CarController {
     }
 
     @ResponseStatus(value = HttpStatus.OK)
-    @RequestMapping(value = "/car/{id}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "api/car/{id}", method = RequestMethod.DELETE)
     public void updateCar(@PathVariable  int id) {
         carService.delete(id);
     }

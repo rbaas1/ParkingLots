@@ -52,7 +52,7 @@ app.controller("viewCarCtrl", function ($scope, $http) {
 
     $scope.delete = function (id)  {
         console.log('deleting');
-        $http.delete("car/" + id).then(function () {
+        $http.delete("api/car/" + id).then(function () {
         	$scope.loadCars();
         });
     };
