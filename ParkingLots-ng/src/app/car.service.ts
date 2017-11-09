@@ -34,16 +34,44 @@ export class CarService {
 
 
   saveCar(licensePlate: string, colour: string) {
-    var c = {
+    var body = {
       "licensePlate": licensePlate,
       "colour": colour
     }
 
-    this.http.post('/api/new/car/', c, {
-        })
-        //.map(res => res.json())
-        .subscribe();
+    return this.http.post('/api/new/car/', body)
+      .toPromise()
+      .then(resp => {return})
+      .catch(this.handleError);
 
+    //.subscribe();
+
+  }
+
+  updateCar(id: number, licensePlate: string, colour: string) {
+    var body = {
+      "id": id,
+      "licensePlate": licensePlate,
+      "colour": colour
+    }
+
+    return this.http.post('/api/new/car/', body)
+      .toPromise()
+      .then(resp => {return})
+      .catch(this.handleError);
+
+    //.subscribe();
+
+  }
+
+
+
+  deleteCar(id: number) {
+    console.log("Attempting to delete " + id);
+    return this.http.delete('api/car/'+id)
+      .toPromise()
+      .then(resp => {return})
+      .catch(this.handleError);
   }
 
 

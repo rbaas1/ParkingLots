@@ -1,0 +1,40 @@
+<h1>Admin</h1>
+
+<p>Admin tools here. Maybe later add login.</p>
+
+<p><button type="button" class="btn btn-success" (click)="makeCar()"><i class="fa fa-car"></i> Generate car</button></p>
+
+
+
+<h2>Cars</h2>
+
+
+<div class="container row">
+
+  <div *ngFor="let car of cars" class="col-20" [attr.id]="'Car'+car.id">
+    <div class="dropdown">
+      <button type="button" class="btn btn-light" id="id" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><font color="{{car.colour}}"><i class="fa fa-car"></i></font></button>
+
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <p class="dropdown-item"><button type="button" class="btn btn-danger" (click)="deleteCar(car.id)"><i class="fa fa-trash"></i> Delete</button> <span class="badge badge-primary badge-pill">{{car.id}}</span></p>
+
+
+          <p class="dropdown-item"><i class="fa fa-car"></i> {{car.licensePlate}}</p>
+          <p class="dropdown-item"><i class="fa fa-paint-brush"></i> {{car.colour}}</p>
+
+          <!--
+          <p class="dropdown-item"><button type="button" class="btn btn-success" (click)="updateCar(car.id, 'test', '#000000')"><i class="fa fa-save"></i> Save</button></p>
+          -->
+
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+
+<div class="input-group">
+  <input type="number" min="1" ng-model="productquantity" placeholder="1" class="form-control" aria-label="Amount">
+  <button class="btn btn-success" ng-click="addToCart(product.id, productquantity)"><i class="fa fa-shopping-basket"></i></button>
+</div>
