@@ -26,7 +26,7 @@ app.controller("addCarCtrl", function ($scope, $http) {
     $scope.save = function ()  {
         console.log('saving');
 
-        $http.post('new/car', angular.toJson($scope.car)).then(function () {
+        $http.post('api/new/car', angular.toJson($scope.car)).then(function () {
             	console.log('saved!' + $scope.car.licensePlate);
             	$scope.msg = "Added " + $scope.car.licensePlate;
             });

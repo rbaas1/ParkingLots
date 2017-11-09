@@ -15,7 +15,7 @@ public class CarController {
     @Autowired  private CarService carService;
 
     @ResponseBody
-    @RequestMapping(value = "/new/car", method = RequestMethod.POST)
+    @RequestMapping(value = "api/new/car", method = RequestMethod.POST)
     public int create(@RequestBody Car car) {
         return carService.save(car).getId();
     }

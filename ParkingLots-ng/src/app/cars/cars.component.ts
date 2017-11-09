@@ -20,4 +20,9 @@ export class CarsComponent implements OnInit {
     this.carService.getCars().then(cars => this.cars = cars);
   }
 
+  makeCar(){
+    console.log("attempting to create car");
+    this.carService.saveCar("twertwer", "#888eeF");
+  }
+
 }

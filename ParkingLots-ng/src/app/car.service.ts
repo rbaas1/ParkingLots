@@ -29,4 +29,23 @@ export class CarService {
     console.error('An error occurred', error);
     return Promise.reject(error.message || error);
   }
+
+
+
+
+  saveCar(licensePlate: string, colour: string) {
+    var c = {
+      "licensePlate": licensePlate,
+      "colour": colour
+    }
+
+    this.http.post('/api/new/car/', c, {
+        })
+        //.map(res => res.json())
+        .subscribe();
+
+  }
+
+
+
 }
