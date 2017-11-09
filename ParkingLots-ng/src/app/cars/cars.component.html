@@ -2,8 +2,6 @@
 <p>The current cars in the database. Each car has an automatically generated ID, and a license plate number and colour.</p>
 
 
-
-
 <div class="row card-group">
   <div *ngFor="let car of cars" class="col-3">
     <div class="card text-white bg-dark mb-3" style="max-width: 20rem;">
@@ -13,16 +11,5 @@
         <p class="card-text">Some info on the car. The color of this car is {{car.colour}}.</p>
       </div>
     </div>
-  </div>
-</div>
-
-<p>The following is a work-in-progress map of a parking lot. The idea being that you can click on a car to view its details. Separate these into different lots.</p>
-
-<div class="container row">
-  <div *ngFor="let car of cars" class="col-20">
-
-    <font color="{{car.colour}}"><i class="fa fa-car"></i></font>
-
-
   </div>
 </div>
