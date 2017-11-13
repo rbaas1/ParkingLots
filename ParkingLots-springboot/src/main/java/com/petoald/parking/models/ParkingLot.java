@@ -9,7 +9,6 @@ import java.util.*;
 @Table(name = "parking_lot")
 public class ParkingLot {
     @Id
-    //@GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private String location;
     private int capacity;

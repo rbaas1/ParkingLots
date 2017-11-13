@@ -44,19 +44,6 @@ public class CarController {
         return carService.findByLicensePlate(licensePlate);
     }
 
-//    @ResponseBody
-//    @RequestMapping(value = "/api/car/update", method = RequestMethod.PUT)
-//    public int updateCar() {
-//        Car currentCar = carService.findOne(id);
-//
-//        if(car.getLicensePlate() != "") currentCar.setLicensePlate(car.getLicensePlate());
-//        currentCar.setColour(car.getColour());
-//        currentCar.setParkingLot(car.getParkingLot());
-//
-//        return carService.save(currentCar).getId();
-//    }
-
-
     @ResponseBody
     @RequestMapping(value = "api/update/car", method = RequestMethod.POST)
     public int updateCar(@RequestBody Car newCar) {
