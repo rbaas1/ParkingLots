@@ -1,14 +1,22 @@
 package com.petoald.parking.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 
 @Entity
+
 public class Car {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private String licensePlate;
     private String colour = "#000000";
+
+    @ManyToOne
+    @JoinColumn(name = "parking_lot_id")
+    @JsonIgnoreProperties("cars")
+    private ParkingLot parkingLot;
 
     public Car() {
     }
@@ -35,6 +43,14 @@ public class Car {
 
     public void setColour(String colour) {
         this.colour = colour;
+    }
+
+    public ParkingLot getParkingLot() {
+        return parkingLot;
+    }
+
+    public void setParkingLot(ParkingLot parkingLot) {
+        this.parkingLot = parkingLot;
     }
 
     @Override

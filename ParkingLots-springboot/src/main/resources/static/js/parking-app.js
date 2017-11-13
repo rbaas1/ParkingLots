@@ -31,6 +31,21 @@ app.controller("addCarCtrl", function ($scope, $http) {
             	$scope.msg = "Added " + $scope.car.licensePlate;
             });
       };
+
+    $scope.loadParking = function ()  {
+            console.log('loading parking');
+            function handleSuccess(response){
+                 $scope.parkinglots = response.data;
+               }
+
+            function handleError(response) {
+                  // handle errors
+               }
+
+            $http.get('api/parkinglot/all').
+              then(handleSuccess).
+              catch(handleError);
+        };
 });
 
 app.controller("viewCarCtrl", function ($scope, $http) {
