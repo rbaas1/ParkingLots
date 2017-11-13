@@ -1,10 +1,10 @@
-<h1>List of cars in the database</h1>
+<<h1>List of cars in the database</h1>
 
 <div ng-init="loadCars()">
     <table>
-        <tr><th>ID</th><th>License plate</th><th>Colour</th><t</tr>
-            <tr ng-repeat="car in cars">
-                <td>{{car.id}}</td><td>{{car.licensePlate}}</td><td>{{car.colour}}</td><td><button class="btn" ng-click="delete(car.id)">delete</button></td>
-            </tr>
+        <tr><th>ID</th><th>License plate</th><th>Colour</th></tr>
+        <tr ng-repeat="car in cars">
+            <td>{{car.id}}</td><td>{{car.licensePlate}}</td><td>{{car.colour}}</td><td><button class="btn" ng-click="delete(car.id)">delete</button></td>
+        </tr>
     </table>
 </div>
