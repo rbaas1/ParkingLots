@@ -48,11 +48,12 @@ export class CarService {
 
   }
 
-  updateCar(id: number, licensePlate: string, colour: string) {
+  updateCar(id: number, licensePlate: string, colour: string, parkingLot: number = 0) {
     var body = {
       "id": id,
       "licensePlate": licensePlate,
-      "colour": colour
+      "colour": colour,
+      "parkingLot": parkingLot
     }
 
     return this.http.post('/api/new/car/', body)

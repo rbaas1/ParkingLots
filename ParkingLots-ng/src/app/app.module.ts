@@ -11,6 +11,7 @@ import { CarService } from './car.service';
 import { HomeComponent } from './home/home.component';
 import { ParkinglotsComponent } from './parkinglots/parkinglots.component';
 import { AdminComponent } from './admin/admin.component';
+import { SimulationComponent } from './simulation/simulation.component';
 //import { MaterialModule, MdList, MdListItem } from '@angular/material'
 
 
@@ -27,7 +28,8 @@ import { AdminComponent } from './admin/admin.component';
     CarsComponent,
     HomeComponent,
     ParkinglotsComponent,
-    AdminComponent
+    AdminComponent,
+    SimulationComponent
   ],
   bootstrap: [AppComponent],
   providers: [CarService],
