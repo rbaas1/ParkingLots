@@ -25,6 +25,12 @@ export class AdminComponent implements OnInit {
     this.parkinglotService.getParkinglots().then(parkinglots => this.parkinglots = parkinglots);
   }
 
+  makeParkinglot(lotId: number, lotLocation: string, lotCapacity: number, lotCost: number){
+    console.log("creating parking lot " + lotId + " - " + lotLocation + " - " + lotCapacity + " - " + lotCost);
+    this.parkinglotService.saveParkinglot(lotId, lotLocation, lotCapacity, lotCost).then(resp => this.ngOnInit());
+  }
+
+
 
   makeCar(){
     this.carService.saveCar(this.generateLicensePlate(), this.generateColour()).then(resp => this.ngOnInit());

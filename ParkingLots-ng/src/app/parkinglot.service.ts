@@ -40,6 +40,20 @@ export class ParkinglotService {
   }
 
 
+  saveParkinglot(id: number, location: string, capacity: number, cost: number) {
+    var body = {
+      "id": id,
+      "location": location,
+      "capacity": capacity,
+      "parkeerkosten": cost
+    }
+
+    return this.http.post('/api/new/parkinglot/', body)
+      .toPromise()
+      .then(resp => {return})
+      .catch(this.handleError);
+
+  }
 
 
   // saveCar(licensePlate: string, colour: string) {

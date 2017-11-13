@@ -31,3 +31,41 @@
   </div>
 
 </div>
+
+
+<h2>Parking Lots</h2>
+
+<h1>Hier nog allemaal errors door, fixen!</h1>
+
+<i class="fa fa-map"></i> <input type="number" [(ngModel)]="lotId" placeholder="id" />
+<i class="fa fa-globe"></i> <input [(ngModel)]="lotLocation" placeholder="Location" />
+<i class="fa fa-car"></i> <input type="number" [(ngModel)]="lotCapacity" placeholder="0" />
+<i class="fa fa-money"></i> <input type="number" [(ngModel)]="lotCost" placeholder="0.00" /><br><br>
+<button type="button" class="btn btn-success" (click)="makeParkinglot(lotId, lotLocation, lotCapacity, lotCost)"><i class="fa fa-save"></i> Create Parking Lot</button>
+
+
+<!--
+
+<div class="container row">
+
+  <div *ngFor="let parkinglot of parkinglots" class="col-20" [attr.id]="'Parkinglot'+parkinglot.id">
+    <div class="dropdown">
+      <button type="button" class="btn btn-light" id="id" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-map"></i></button>
+
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <p class="dropdown-item"><button type="button" class="btn btn-danger" (click)="deleteParkinglot(parkinglot.id)"><i class="fa fa-trash"></i> Delete</button> <span class="badge badge-primary badge-pill">{{parkinglot.id}}</span></p>
+
+
+          <p class="dropdown-item"><i class="fa fa-car"></i> <input [(ngModel)]="lotLocation" placeholder="Location" /></p>
+          <p class="dropdown-item"><i class="fa fa-paint-brush"></i> <input type="number" [(ngModel)]="lotCapacity" placeholder="Colour" /></p>
+          <p class="dropdown-item"><i class="fa fa-map"></i> <input type="number" [(ngModel)]="lotCost" placeholder="ParkingLot cost" /></p>
+          <p class="dropdown-item"><button type="button" class="btn btn-success" (click)="makeParkinglot(lotId, lotLocation, lotCapacity, lotCost)"><i class="fa fa-save"></i> Save changes</button></p>
+
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+-->
