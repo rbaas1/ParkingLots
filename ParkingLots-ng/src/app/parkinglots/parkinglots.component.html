@@ -1,5 +1,6 @@
 <h1>Parking Lots</h1>
 
+
 <!--
 <p>The following is a work-in-progress map of a parking lot. The idea being that you can click on a car to view its details. Separate these into different lots.</p>
 
@@ -41,9 +42,12 @@
 <div class="row card-group">
   <div *ngFor="let parkinglot of parkinglots" class="col-3">
     <div class="card text-white bg-dark mb-3" style="max-width: 20rem;">
-      <div class="card-header"><i class="fa fa-map"></i> Parking lot {{parkinglot.id}}</div>
+      <div class="card-header"><i class="fa fa-map"></i> Parking Lot {{parkinglot.id}}</div>
       <div class="card-body">
         <h4 class="card-title">{{parkinglot.location}}</h4>
+
+
+<!--
         <div class="col-20" *ngFor="let car of parkinglot.cars" [attr.id]="'Car'+car.id">
 
 
@@ -56,22 +60,21 @@
               <p class="dropdown-item">Colour: {{car.colour}}</p>
             </div>
           </div>
-
-
-
-<!--
-        <p class="card-text">
-
-          <button type="button" class="btn btn-light btn-sm" id="id" ><font color="{{car.colour}}"><i class="fa fa-car"></i></font></button>
-
-
-
-        </p>
 -->
 
 
 
-      </div>
+        <p class="card-text">
+
+          x/{{parkinglot.capacity}}
+          <br><br>
+          <button type="button" class="btn btn-light" (click)="gotoDetail(parkinglot.id)"><i class="fa fa-info"></i> Details</button>
+
+        </p>
+
+
+
+      <!--</div>-->
       </div>
     </div>
   </div>

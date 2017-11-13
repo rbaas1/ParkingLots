@@ -1,0 +1,32 @@
+<h1>Parking lot Details</h1>
+<div *ngIf="parkinglot">
+  ID: {{parkinglot.id}}<br>
+  Location: {{parkinglot.location}}<br>
+  Capacity: {{parkinglot.capacity}}<br>
+  Parked cars:
+
+
+
+
+  <div class="container row w-25">
+
+    <div *ngFor="let car of parkinglot.cars" class="col-20" [attr.id]="'Car'+car.id">
+      <div class="dropdown">
+        <button type="button" class="btn btn-light btn-sm" id="id" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><font color="{{car.colour}}"><i class="fa fa-car"></i></font></button>
+
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <p class="dropdown-item">ID: {{car.id}}</p>
+          <p class="dropdown-item">License plate: {{car.licensePlate}}</p>
+          <p class="dropdown-item">Colour: {{car.colour}}</p>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+
+</div>
+
+<br>
+<button type="button" class="btn btn-light" (click)="goBack()"><i class="fa fa-arrow-left"></i> Back</button>

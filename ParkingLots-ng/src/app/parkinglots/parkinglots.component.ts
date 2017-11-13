@@ -24,4 +24,8 @@ export class ParkinglotsComponent implements OnInit {
     this.parkinglotService.getParkinglots().then(parkinglots => this.parkinglots = parkinglots);
   }
 
+  gotoDetail(id: number): void {
+    this.router.navigate(['/parkinglot', id]);
+  }
+
 }
