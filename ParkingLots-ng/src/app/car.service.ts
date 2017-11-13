@@ -33,10 +33,13 @@ export class CarService {
 
 
 
-  saveCar(licensePlate: string, colour: string) {
+  saveCar(licensePlate: string, colour: string, parkingLot: number = 0) {
     var body = {
       "licensePlate": licensePlate,
-      "colour": colour
+      "colour": colour,
+      "parkingLot": {
+	        "id": parkingLot
+	    }
     }
 
     return this.http.post('/api/new/car/', body)
@@ -53,7 +56,9 @@ export class CarService {
       "id": id,
       "licensePlate": licensePlate,
       "colour": colour,
-      "parkingLot": parkingLot
+      "parkingLot": {
+	        "id": parkingLot
+	    }
     }
 
     return this.http.post('/api/new/car/', body)

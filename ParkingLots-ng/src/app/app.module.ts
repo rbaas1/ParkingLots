@@ -10,6 +10,7 @@ import { CarsComponent } from './cars/cars.component';
 import { CarService } from './car.service';
 import { HomeComponent } from './home/home.component';
 import { ParkinglotsComponent } from './parkinglots/parkinglots.component';
+import { ParkinglotService } from './parkinglot.service';
 import { AdminComponent } from './admin/admin.component';
 import { SimulationComponent } from './simulation/simulation.component';
 //import { MaterialModule, MdList, MdListItem } from '@angular/material'
@@ -32,6 +33,6 @@ import { SimulationComponent } from './simulation/simulation.component';
     SimulationComponent
   ],
   bootstrap: [AppComponent],
-  providers: [CarService],
+  providers: [CarService, ParkinglotService],
 })
 export class AppModule { }
