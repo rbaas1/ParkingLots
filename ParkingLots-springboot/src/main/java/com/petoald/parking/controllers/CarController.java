@@ -22,7 +22,7 @@ public class CarController {
 
     @ResponseStatus(value = HttpStatus.OK)
     @RequestMapping(value = "api/car/{id}", method = RequestMethod.DELETE)
-    public void updateCar(@PathVariable  int id) {
+    public void removeCar(@PathVariable  int id) {
         carService.delete(id);
     }
 
@@ -40,8 +40,31 @@ public class CarController {
 
     @ResponseBody
     @RequestMapping(value = "/api/cardetail/{licensePlate}", method = RequestMethod.GET)
-    public List<Car> carByLicensePlate(@PathVariable  String licensePlate) {
+    public List<Car> carByLicensePlate(@PathVariable String licensePlate) {
         return carService.findByLicensePlate(licensePlate);
+    }
+
+//    @ResponseBody
+//    @RequestMapping(value = "/api/car/update", method = RequestMethod.PUT)
+//    public int updateCar() {
+//        Car currentCar = carService.findOne(id);
+//
+//        if(car.getLicensePlate() != "") currentCar.setLicensePlate(car.getLicensePlate());
+//        currentCar.setColour(car.getColour());
+//        currentCar.setParkingLot(car.getParkingLot());
+//
+//        return carService.save(currentCar).getId();
+//    }
+
+
+    @ResponseBody
+    @RequestMapping(value = "api/update/car", method = RequestMethod.POST)
+    public int updateCar(@RequestBody Car newCar) {
+        Car old = carService.findOne(newCar.getId());
+        newCar.setColour(old.getColour());
+        newCar.setLicensePlate(old.getLicensePlate());
+
+        return carService.save(newCar).getId();
     }
 
 }

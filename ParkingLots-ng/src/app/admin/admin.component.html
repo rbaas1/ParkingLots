@@ -21,7 +21,7 @@
 
           <p class="dropdown-item"><i class="fa fa-car"></i> <input [(ngModel)]="car.licensePlate" placeholder="Plate" /></p>
           <p class="dropdown-item"><i class="fa fa-paint-brush"></i> <input type="color" [(ngModel)]="car.colour" placeholder="Colour" /></p>
-          <p class="dropdown-item"><i class="fa fa-map"></i> <input [(ngModel)]="car.parkingLot.id" placeholder="Parking lot" /></p>
+          <p class="dropdown-item"><i class="fa fa-map"></i> <input type="number" [(ngModel)]="car.parkingLot.id" placeholder="ParkingLot ID" /></p>
           <p class="dropdown-item"><button type="button" class="btn btn-success" (click)="updateCar(car.id, car.licensePlate, car.colour, car.parkingLot.id)"><i class="fa fa-save"></i> Save changes</button></p>
 
       </div>
