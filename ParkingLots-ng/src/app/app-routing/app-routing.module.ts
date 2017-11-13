@@ -6,13 +6,15 @@ import { HomeComponent } from '../home/home.component';
 import { CarsComponent } from '../cars/cars.component';
 import { ParkinglotsComponent } from '../parkinglots/parkinglots.component';
 import { AdminComponent } from '../admin/admin.component';
+import { SimulationComponent } from '../simulation/simulation.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'cars', component: CarsComponent},
   { path: 'parkinglots', component: ParkinglotsComponent },
-  { path: 'admin', component: AdminComponent }
+  { path: 'admin', component: AdminComponent },
+  { path: 'simulation', component: SimulationComponent }
 ];
 
 @NgModule({
