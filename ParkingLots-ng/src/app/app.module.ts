@@ -13,6 +13,7 @@ import { ParkinglotsComponent } from './parkinglots/parkinglots.component';
 import { ParkinglotService } from './parkinglot.service';
 import { AdminComponent } from './admin/admin.component';
 import { SimulationComponent } from './simulation/simulation.component';
+import { ParkinglotDetailComponent } from './parkinglot-detail/parkinglot-detail.component';
 //import { MaterialModule, MdList, MdListItem } from '@angular/material'
 
 
@@ -30,7 +31,8 @@ import { SimulationComponent } from './simulation/simulation.component';
     HomeComponent,
     ParkinglotsComponent,
     AdminComponent,
-    SimulationComponent
+    SimulationComponent,
+    ParkinglotDetailComponent
   ],
   bootstrap: [AppComponent],
   providers: [CarService, ParkinglotService],

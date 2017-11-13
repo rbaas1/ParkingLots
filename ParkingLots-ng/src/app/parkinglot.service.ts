@@ -18,6 +18,15 @@ export class ParkinglotService {
 
   private parkinglotUrl = '/api/parkinglot/all';
 
+  getParkinglot(id: number): Promise<Parkinglot> {
+    return this.http.get('/api/parkinglot/'+id)
+    .toPromise()
+    .then(response => response.json() as Parkinglot)
+    .catch(this.handleError);
+    //return this.getParkinglots()
+    //           .then(parkinglots => parkinglots.find(parkinglot => parkinglot.id === id));
+  }
+
   getParkinglots(): Promise<Parkinglot[]> {
     return this.http.get(this.parkinglotUrl)
       .toPromise()
