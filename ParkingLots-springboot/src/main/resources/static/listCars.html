@@ -2,9 +2,9 @@
 
 <div ng-init="loadCars()">
     <table>
-        <tr><th>ID</th><th>License plate</th><th>Colour</th></tr>
+        <tr><th>ID</th><th>License plate</th><th>Colour</th><th>Parkinglot</th></tr>
         <tr ng-repeat="car in cars">
-            <td>{{car.id}}</td><td>{{car.licensePlate}}</td><td>{{car.colour}}</td><td><button class="btn" ng-click="delete(car.id)">delete</button></td>
+            <td>{{car.id}}</td><td>{{car.licensePlate}}</td><td>{{car.colour}}</td><td>{{car.parkingLot["location"]}}</td><td><button class="btn" ng-click="delete(car.id)">delete</button></td>
         </tr>
     </table>
 </div>

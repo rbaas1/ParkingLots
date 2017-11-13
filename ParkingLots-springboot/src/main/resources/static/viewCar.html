@@ -7,7 +7,7 @@
             <th>Search by license plate</th>
         </tr>
         <tr>
-            <td><input type="text" ng-model="licensePlate" id="searchPlate"></td>
+            <td><input type="text" maxlength="8" ng-model="licensePlate" id="searchPlate"></td>
         </tr>
     </table>
     <button type="submit" ng-click="searchByPlate(licensePlate)">Search Car</button>
@@ -15,9 +15,9 @@
 
 <div>
     <table>
-        <tr><th>ID</th><th>License plate</th><th>Colour</th><t</tr>
+        <tr><th>ID</th><th>License plate</th><th>Colour</th><th>Parkinglot</th></tr>
         <tr ng-repeat="car in cars">
-            <td>{{car.id}}</td><td>{{car.licensePlate}}</td><td>{{car.colour}}</td>
+            <td>{{car.id}}</td><td>{{car.licensePlate}}</td><td>{{car.colour}}</td><td>{{car.parkingLot["location"]}}</td>
         </tr>
     </table>
 </div>
