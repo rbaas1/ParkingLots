@@ -48,7 +48,7 @@
           {{car.id}}
         </div>
         <div class="col-sm">
-          <input type="text" [(ngModel)]="car.licensePlate" placeholder="licensePlate" />
+          <input type="text"  maxlength="8" [(ngModel)]="car.licensePlate" placeholder="licensePlate" />
         </div>
         <div class="col-sm">
           <input type="color" [(ngModel)]="car.colour" placeholder="colour" />
