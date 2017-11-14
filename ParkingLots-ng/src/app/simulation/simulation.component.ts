@@ -72,7 +72,7 @@ export class SimulationComponent implements OnInit {
       var t = Object.assign(new Car(null,null,null,null), c);
       this.simulatedCars.push(t);
 
-       t.printId();
+      // t.printId();
       // console.log(t);
 
     }
@@ -88,7 +88,7 @@ export class SimulationComponent implements OnInit {
       var t = Object.assign(new Parkinglot(null,null,null,null), p);
       this.simulatedParkinglots.push(t);
 
-       t.printId();
+      // t.printId();
       // console.log(t);
 
     }
