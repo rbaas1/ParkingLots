@@ -25,9 +25,21 @@ export class AdminComponent implements OnInit {
     this.parkinglotService.getParkinglots().then(parkinglots => this.parkinglots = parkinglots);
   }
 
-  makeParkinglot(lotId: number, lotLocation: string, lotCapacity: number, lotCost: number){
-    console.log("creating parking lot " + lotId + " - " + lotLocation + " - " + lotCapacity + " - " + lotCost);
-    this.parkinglotService.saveParkinglot(lotId, lotLocation, lotCapacity, lotCost).then(resp => this.ngOnInit());
+  existsParkinglot(id: number){
+    if(this.parkinglots == null) return false;
+    for(let p of this.parkinglots){
+      if(p["id"] == id){
+        return true;
+      }
+    }
+    return false;
+
+  }
+
+  makeParkinglot(id: number, location: string, capacity: number, cost: number){
+    console.log("creating parking lot " + id + " - " + location + " - " + capacity + " - " + cost);
+
+    this.parkinglotService.saveParkinglot(id, location, capacity, cost).then(resp => this.ngOnInit());
   }
 
 
