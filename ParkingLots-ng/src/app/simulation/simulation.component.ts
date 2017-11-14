@@ -18,12 +18,49 @@ export class SimulationComponent implements OnInit {
   simulatedParkinglots: Parkinglot[] = [];
   simulatedCars: Car[] = [];
 
+
+  started = false;
+
+  cash: number = 0;
+
+  day: number = 0;
+  hour: number = 0;
+
+  hourInterval = null;
+
   constructor(private router: Router, private carService: CarService, private parkinglotService: ParkinglotService) { }
 
   ngOnInit() {
     this.carService.getCars().then(cars => this.cars = cars).then(resp => this.createSimulatedCars());
     this.parkinglotService.getParkinglots().then(parkinglots => this.parkinglots = parkinglots).then(resp => this.createSimulatedParkinglots());
 
+  }
+
+  start(){
+    console.log("Starting simulation");
+    this.started = true;
+    this.hourInterval = setInterval(function(){
+      this.nextHour();
+    }.bind(this), 100);
+  }
+
+  stop(){
+    console.log("Stopping simulation");
+    clearInterval(this.hourInterval);
+    this.started = false;
+  }
+
+  nextHour(){
+    this.hour++;
+    if(this.hour > 23){
+      this.hour = 0;
+      this.nextDay();
+    }
+  }
+
+  nextDay(){
+    this.day++;
+    this.cash+=1.93;
   }
 
 

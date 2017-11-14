@@ -1,16 +1,24 @@
-<h1>Simulation</h1>
+<h1>Simulation <button *ngIf="!started" type="button" class="btn btn-success" (click)="start()"><i class="fa fa-play"></i> START</button> <button *ngIf="started" type="button" class="btn btn-danger" (click)="stop()"><i class="fa fa-stop"></i> STOP</button>
+</h1>
 
+
+<br>
 
 <div class="container">
   <div class="row">
     <div class="col-sm">
+      <div class="alert alert-info container-fluid" role="alert">
+        <i class="fa fa-clock-o"></i> {{(hour<10)? 0 : ''}}{{hour}}:00 <i class="fa fa-calendar"></i> {{day}}
+      </div>
+    </div>
+    <div class="col-sm">
       <div class="alert alert-success container-fluid" role="alert">
-        <i class="fa fa-money"></i> $0.00
+        <i class="fa fa-money"></i> ${{cash}}
       </div>
     </div>
     <div class="col-sm">
       <div class="alert alert-primary container-fluid" role="alert">
-        <i class="fa fa-map"></i> 1 parking lot
+        <i class="fa fa-map"></i> {{parkinglots.length - 1}} parking lots
       </div>
     </div>
     <div class="col-sm">
@@ -24,6 +32,9 @@
 <div class="container">
   <div class="row">
     <div class="col-sm">
+      Simulating hours, days
+    </div>
+    <div class="col-sm">
       Cashflow: $0.00 per hour
     </div>
     <div class="col-sm">
@@ -34,6 +45,12 @@
     </div>
   </div>
 </div>
+
+
+
+<h1>Stuff</h1>
+<p>hour: {{hour}}, day: {{day}}</p>
+
 
 
 <br>
