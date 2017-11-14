@@ -1,5 +1,6 @@
-export class Parkinglot {
+import { Car } from './car';
 
+export class Parkinglot {
   constructor(id: number, location: string, capacity: number, parkingCost: number) {
 
   }
@@ -8,4 +9,11 @@ export class Parkinglot {
   licensePlate: string;
   capacity: number;
   parkingCost: number;
+  cars: Car[];
+  freeSpace: number;
+
+  printId(){
+    console.log("id " + this.id);
+  }
+
 }
