@@ -47,7 +47,7 @@ export class ParkinglotService {
       "capacity": capacity,
       "parkingCost": cost
     }
-    
+
     return this.http.post('/api/new/parkinglot/', body)
       .toPromise()
       .then(resp => {return})
@@ -55,6 +55,13 @@ export class ParkinglotService {
 
   }
 
+  deleteParkinglot(id: number) {
+    console.log("Attempting to delete lot " + id);
+    return this.http.delete('api/parkinglot/'+id)
+      .toPromise()
+      .then(resp => {return})
+      .catch(this.handleError);
+  }
 
   // saveCar(licensePlate: string, colour: string) {
   //   var body = {

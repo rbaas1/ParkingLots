@@ -3,177 +3,149 @@
 <p>Admin tools here. Maybe later add login.</p>
 
 
-<p><button type="button" class="btn btn-success" (click)="makeCar()"><i class="fa fa-car"></i> Generate car</button></p>
+<!-- CARS -->
+
+
+<p>
+  <button class="btn btn-light" type="button" data-toggle="collapse" data-target="#showCars" aria-expanded="false" aria-controls="showCars">
+    <i class="fa fa-car"></i> Show cars
+  </button>
+  <button class="btn btn-light" type="button" data-toggle="collapse" data-target="#showParkinglots" aria-expanded="false" aria-controls="showParkinglots">
+    <i class="fa fa-map"></i> Show parking lots
+  </button>
+</p>
+<div class="collapse" id="showCars">
+  <div class="card card-body">
 
 
 
-<h2>Cars</h2>
 
-
-<div class="container row">
-
-  <div *ngFor="let car of cars" class="col-20" [attr.id]="'Car'+car.id">
-    <div class="dropdown">
-      <button type="button" class="btn btn-light" id="id" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><font color="{{car.colour}}"><i class="fa fa-car"></i></font></button>
-
-      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <p class="dropdown-item"><button type="button" class="btn btn-danger" (click)="deleteCar(car.id)"><i class="fa fa-trash"></i> Delete</button> <span class="badge badge-primary badge-pill">{{car.id}}</span></p>
-
-
-          <p class="dropdown-item"><i class="fa fa-car"></i> <input [(ngModel)]="car.licensePlate" placeholder="Plate" /></p>
-          <p class="dropdown-item"><i class="fa fa-paint-brush"></i> <input type="color" [(ngModel)]="car.colour" placeholder="Colour" /></p>
-          <p class="dropdown-item"><i class="fa fa-map"></i> <input type="number" [(ngModel)]="car.parkingLot.id" placeholder="ParkingLot ID" /></p>
-          <p class="dropdown-item"><button type="button" class="btn btn-success" (click)="updateCar(car.id, car.licensePlate, car.colour, car.parkingLot.id)"><i class="fa fa-save"></i> Save changes</button></p>
-
+    <div class="container">
+      <h3>Cars</h3>
+      <hr>
+      <div class="row">
+        <div class="col-sm">
+          <strong><i class="fa fa-info"></i> ID</strong>
+        </div>
+        <div class="col-sm">
+          <strong><i class="fa fa-car"></i> License Plate</strong>
+        </div>
+        <div class="col-sm">
+          <strong><i class="fa fa-paint-brush"></i> Colour</strong>
+        </div>
+        <div class="col-sm">
+          <strong><i class="fa fa-map"></i> Parked in</strong>
+        </div>
+        <div class="col-sm">
+          <strong><i class="fa fa-gear"></i> <button type="button" class="btn btn-success" (click)="makeCar()"><i class="fa fa-car"></i> <strong>+</strong></button></strong>
+        </div>
       </div>
+
+      <hr>
+
+      <div class="row" *ngFor="let car of cars" [attr.id]="'Car'+car.id">
+        <div class="col-sm">
+          {{car.id}}
+        </div>
+        <div class="col-sm">
+          <input type="text" [(ngModel)]="car.licensePlate" placeholder="licensePlate" />
+        </div>
+        <div class="col-sm">
+          <input type="color" [(ngModel)]="car.colour" placeholder="colour" />
+        </div>
+        <div class="col-sm">
+          <select [(ngModel)]="car.parkingLot.id"><option *ngFor="let parkinglot of parkinglots" [ngValue]="parkinglot.id">{{parkinglot.location}}</option></select>
+        </div>
+        <div class="col-sm">
+          <button type="button" class="btn btn-danger" (click)="deleteCar(car.id)"><i class="fa fa-trash"></i></button>
+          <button type="button" class="btn btn-success" (click)="updateCar(car.id, car.licensePlate, car.colour, car.parkingLot.id)"><i class="fa fa-save"></i></button>
+        </div>
+      </div>
+
+      <hr>
+
     </div>
 
-  </div>
 
+
+  </div>
 </div>
 
 
+<!-- PARKING LOTS -->
+<br>
+
+<div class="collapse" id="showParkinglots">
+  <div class="card card-body">
 
 
-<div class="container">
-  <div class="row">
-    <div class="col-sm">
-      <strong><i class="fa fa-info"></i> ID</strong>
+
+    <div class="container">
+      <h3>Parking Lots</h3>
+      <hr>
+      <div class="row">
+          <div class="col-sm">
+            <strong><i class="fa fa-info"></i> ID</strong>
+          </div>
+          <div class="col-sm">
+            <strong><i class="fa fa-map"></i> Location</strong>
+          </div>
+          <div class="col-sm">
+            <strong><i class="fa fa-car"></i> Capacity</strong>
+          </div>
+          <div class="col-sm">
+            <strong><i class="fa fa-money"></i> Parking Cost</strong>
+          </div>
+          <div class="col-sm">
+            <strong><i class="fa fa-gear"></i></strong>
+          </div>
+      </div>
+
+      <hr>
+
+      <div class="row" *ngFor="let parkinglot of parkinglots" >
+        <div class="col-sm">
+          <input type="number" size="4" [(ngModel)]="parkinglot.id" disabled />
+        </div>
+        <div class="col-sm">
+          <input type="text" [(ngModel)]="parkinglot.location" />
+        </div>
+        <div class="col-sm">
+          <input type="number" min="0" step="10" size="8" [(ngModel)]="parkinglot.capacity" />
+        </div>
+        <div class="col-sm">
+          <input type="number" min="0" max="10" step="0.01" size="6" [(ngModel)]="parkinglot.parkingCost" />
+        </div>
+        <div class="col-sm">
+          <button *ngIf="parkinglot.id!=0" type="button" class="btn btn-danger" (click)="deleteParkinglot(parkinglot.id)"><i class="fa fa-trash"></i></button>
+          <button *ngIf="parkinglot.id!=0" type="button" class="btn btn-success" (click)="makeParkinglot(parkinglot.id, parkinglot.location, parkinglot.capacity, parkinglot.parkingCost)"><i class="fa fa-save"></i></button>
+        </div>
+      </div>
+
+      <hr>
+
+      <div class="row">
+          <div class="col-sm">
+            <input type="number" min="1" step="1" [(ngModel)]="lotId" placeholder="1" size="4"/>
+          </div>
+          <div class="col-sm">
+            <input type="text" [(ngModel)]="lotLocation" placeholder="Location"/>
+          </div>
+          <div class="col-sm">
+            <input type="number" min="0" step="10" [(ngModel)]="lotCapacity" placeholder="0" size="8" />
+          </div>
+          <div class="col-sm">
+            <input type="number" min="0" max="10" step="0.01" [(ngModel)]="lotParkingcost" placeholder="0.01" size="6"/>
+          </div>
+          <div class="col-sm">
+            <button *ngIf="!existsParkinglot(lotId)" type="button" class="btn btn-success" (click)="makeParkinglot(lotId, lotLocation, lotCapacity, lotParkingcost)"><i class="fa fa-map"></i><strong>+</strong></button>
+          </div>
+      </div>
+
     </div>
-    <div class="col-sm">
-      <strong><i class="fa fa-car"></i> License Plate</strong>
-    </div>
-    <div class="col-sm">
-      <strong><i class="fa fa-paint-brush"></i> Colour</strong>
-    </div>
-    <div class="col-sm">
-      <strong><i class="fa fa-map"></i> Parked in</strong>
-    </div>
-    <div class="col-sm">
-      <strong><i class="fa fa-gear"></i> Options</strong>
-    </div>
+
+
   </div>
-
-  <hr>
-
-  <div class="row" *ngFor="let car of cars" [attr.id]="'Car'+car.id">
-    <div class="col-sm">
-      {{car.id}}
-    </div>
-    <div class="col-sm">
-      <input type="text" [(ngModel)]="car.licensePlate" placeholder="licensePlate" />
-    </div>
-    <div class="col-sm">
-      <input type="color" [(ngModel)]="car.colour" placeholder="colour" />
-    </div>
-    <div class="col-sm">
-      <select [(ngModel)]="car.parkingLot.id"><option *ngFor="let parkinglot of parkinglots" [ngValue]="parkinglot.id">{{parkinglot.location}}</option></select>
-    </div>
-    <div class="col-sm">
-      <button type="button" class="btn btn-danger" (click)="deleteCar(car.id)"><i class="fa fa-trash"></i></button>
-      <button type="button" class="btn btn-success" (click)="updateCar(car.id, car.licensePlate, car.colour, car.parkingLot.id)"><i class="fa fa-save"></i></button>
-    </div>
-  </div>
-
-  <hr>
-
-  
-
-
-
 </div>
 
-
-
-
-
-
-<h2>Parking Lots</h2>
-
-<div class="container">
-  <div class="row">
-      <div class="col-sm">
-        <strong>ID</strong>
-      </div>
-      <div class="col-sm">
-        <strong>Location</strong>
-      </div>
-      <div class="col-sm">
-        <strong>Capacity</strong>
-      </div>
-      <div class="col-sm">
-        <strong>Parking Cost</strong>
-      </div>
-      <div class="col-sm">
-        <strong>Options</strong>
-      </div>
-  </div>
-
-  <hr>
-
-  <div class="row" *ngFor="let parkinglot of parkinglots" >
-    <div class="col-sm">
-      {{parkinglot.id}}
-    </div>
-    <div class="col-sm">
-      <input type="text" [(ngModel)]="parkinglot.location" />
-    </div>
-    <div class="col-sm">
-      <input type="number" min="0" step="10" [(ngModel)]="parkinglot.capacity" />
-    </div>
-    <div class="col-sm">
-      <input type="number" min="0" max="10" step="0.01" [(ngModel)]="parkinglot.parkeerkosten" />
-    </div>
-    <div class="col-sm">
-      <button *ngIf="parkinglot.id!=0" type="button" class="btn btn-success" (click)="makeParkinglot(parkinglot.id, parkinglot.location, parkinglot.capacity, parkinglot.parkeerkosten)">Save changes</button>
-    </div>
-  </div>
-
-  <hr>
-
-  <div class="row">
-      <div class="col-sm">
-        <input type="number" min="1" step="1" [(ngModel)]="lotId" placeholder="1"/>
-      </div>
-      <div class="col-sm">
-        <input type="text" [(ngModel)]="lotLocation" placeholder="Location"/>
-      </div>
-      <div class="col-sm">
-        <input type="number" min="0" step="10" [(ngModel)]="lotCapacity" placeholder="0" />
-      </div>
-      <div class="col-sm">
-        <input type="number" min="0" max="10" step="0.01" [(ngModel)]="lotParkingcost" placeholder="0.01"/>
-      </div>
-      <div class="col-sm">
-        <button *ngIf="!existsParkinglot(lotId)" type="button" class="btn btn-success" (click)="makeParkinglot(lotId, lotLocation, lotCapacity, lotParkingcost)">Save new lot</button>
-      </div>
-  </div>
-
-</div>
-
-
-<!--
-
-<div class="container row">
-
-  <div *ngFor="let parkinglot of parkinglots" class="col-20" [attr.id]="'Parkinglot'+parkinglot.id">
-    <div class="dropdown">
-      <button type="button" class="btn btn-light" id="id" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-map"></i></button>
-
-      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <p class="dropdown-item"><button type="button" class="btn btn-danger" (click)="deleteParkinglot(parkinglot.id)"><i class="fa fa-trash"></i> Delete</button> <span class="badge badge-primary badge-pill">{{parkinglot.id}}</span></p>
-
-
-          <p class="dropdown-item"><i class="fa fa-car"></i> <input [(ngModel)]="lotLocation" placeholder="Location" /></p>
-          <p class="dropdown-item"><i class="fa fa-paint-brush"></i> <input type="number" [(ngModel)]="lotCapacity" placeholder="Colour" /></p>
-          <p class="dropdown-item"><i class="fa fa-map"></i> <input type="number" [(ngModel)]="lotCost" placeholder="ParkingLot cost" /></p>
-          <p class="dropdown-item"><button type="button" class="btn btn-success" (click)="makeParkinglot(lotId, lotLocation, lotCapacity, lotCost)"><i class="fa fa-save"></i> Save changes</button></p>
-
-      </div>
-    </div>
-
-  </div>
-
-</div>
-
--->
+<br>
