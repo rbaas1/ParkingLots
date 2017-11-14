@@ -1,68 +1,16 @@
 <h1>Parking Lots</h1>
 
 
-<!--
-<p>The following is a work-in-progress map of a parking lot. The idea being that you can click on a car to view its details. Separate these into different lots.</p>
-
-<p>Change this to cars in parking lot</p>
-
-<div class="container row w-25">
-
-  <div *ngFor="let car of cars" class="col-20" [attr.id]="'Car'+car.id">
-    <div class="dropdown">
-      <button type="button" class="btn btn-light btn-sm" id="id" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><font color="{{car.colour}}"><i class="fa fa-car"></i></font></button>
-
-      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <p class="dropdown-item">ID: {{car.id}}</p>
-        <p class="dropdown-item">License plate: {{car.licensePlate}}</p>
-        <p class="dropdown-item">Colour: {{car.colour}}</p>
-        <p class="dropdown-item">Lot: {{car.parkingLot}}</p>
-      </div>
-    </div>
-
-  </div>
-
-</div>
--->
-
 <p>Work in progress overview of all parking lots.</p>
 
-<!--
-<div *ngFor="let parkinglot of parkinglots" class="col-20" [attr.id]="'Parkinglot'+parkinglot.id">
-  {{parkinglot.id}} -- {{parkinglot.location}} -- {{parkinglot.cars}}
-
-  <div *ngFor="let car of parkinglot.cars" class="col-20" [attr.id]="'Car'+car.id">
-    {{car.id}} -- {{car.colour}}
-  </div>
-
-</div>
--->
 
 
 <div class="row card-group">
   <div *ngFor="let parkinglot of parkinglots" class="col-3">
-    <div class="card text-white bg-dark mb-3" style="max-width: 20rem;">
+    <div class="card text-dark bg-light mb-3" style="max-width: 20rem;">
       <div class="card-header"><i class="fa fa-map"></i> Parking Lot {{parkinglot.id}}</div>
       <div class="card-body">
         <h4 class="card-title">{{parkinglot.location}}</h4>
-
-
-<!--
-        <div class="col-20" *ngFor="let car of parkinglot.cars" [attr.id]="'Car'+car.id">
-
-
-          <div class="dropdown">
-            <button type="button" class="btn btn-light btn-sm" id="id" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><font color="{{car.colour}}"><i class="fa fa-car"></i></font></button>
-
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <p class="dropdown-item">ID: {{car.id}}</p>
-              <p class="dropdown-item">License plate: {{car.licensePlate}}</p>
-              <p class="dropdown-item">Colour: {{car.colour}}</p>
-            </div>
-          </div>
--->
-
-
 
         <p class="card-text">
 
@@ -71,13 +19,11 @@
           Cost: ${{parkinglot.parkingCost}}
 
           <br><br>
-          <button type="button" class="btn btn-light" (click)="gotoDetail(parkinglot.id)"><i class="fa fa-info"></i> Details</button>
+          <button type="button" class="btn btn-dark" (click)="gotoDetail(parkinglot.id)"><i class="fa fa-info"></i> Details</button>
 
         </p>
 
 
-
-      <!--</div>-->
       </div>
     </div>
   </div>
