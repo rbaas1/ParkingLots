@@ -13,7 +13,7 @@ export class Parkinglot {
   freeSpace: number;
 
   printId(){
-    console.log("id " + this.id);
+    console.log("Parkinglot id: " + this.id);
   }
 
 }

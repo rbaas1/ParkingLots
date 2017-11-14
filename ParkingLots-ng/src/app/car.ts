@@ -8,4 +8,10 @@ export class Car {
   licensePlate: string;
   colour: string;
   parkingLot: number;
+
+
+  printId(){
+    console.log("Car id: " + this.id);
+  }
+
 }
