@@ -35,13 +35,13 @@ public class ParkingLotController {
 
     @ResponseBody
     @RequestMapping(value = "/api/parkinglot/{id}", method = RequestMethod.GET)
-    public ParkingLot carById(@PathVariable  int id) {
+    public ParkingLot parkingLotById(@PathVariable  int id) {
         return parkingLotService.findOne(id);
     }
 
     @ResponseBody
     @RequestMapping(value = "/api/parkinglotdetail/{location}", method = RequestMethod.GET)
-    public List<ParkingLot> parkkingLotByLocation(@PathVariable  String location) {
+    public List<ParkingLot> parkingLotByLocation(@PathVariable  String location) {
         return parkingLotService.findByLocation(location);
     }
 
