@@ -1,25 +1,41 @@
 <h1>Add a car to the database</h1>
 <h3>This will become a form to add cars to the database</h3>
 <p>In the form you can declare the car's license-plate and colour.</p>
-<form>
-    <table ng-init="loadParking()">
-        <tr>
-            <th>License plate</th>
-            <th>Colour</th>
-        </tr>
-        <tr>
-            <td><input type="text" maxlength="8" ng-model="car.licensePlate" id="licensePlate"></td>
-            <td><input type="color" ng-model="car.colour" id="colour"></td>
-            <td>
+<form ng-init="loadParking()">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm">
+                <strong>License plate</strong>
+            </div>
+            <div class="col-sm">
+                <strong>Colour</strong>
+            </div>
+            <div class="col-sm">
+                <strong>Location</strong>
+            </div>
+            <div class="col-sm">
+                <strong>Option</strong>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm">
+                <input type="text" maxlength="8" ng-model="car.licensePlate" id="licensePlate">
+            </div>
+            <div class="col-sm">
+                <input type="color" ng-model="car.colour" id="colour">
+            </div>
+            <div class="col-sm">
                 <select>
                     <option ng-repeat="parkinglot in parkinglots" value="{{parkingLot}}">
                         {{parkinglot.id}} - {{parkinglot.location}}
                     </option>
                 </select>
-            </td>
-        </tr>
-    </table>
-    <button type="submit" ng-click="save()" ng-model-instant>Add Car</button>
+            </div>
+            <div class="col-sm">
+                <button type="submit" ng-click="save()" ng-model-instant>Add Car</button>
+            </div>
+        </div>
+    </div>
 </form>
 
 <p>{{msg}}</p>
