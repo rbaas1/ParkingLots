@@ -20,9 +20,14 @@ export class ParkinglotDetailComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    console.log("Details: " + this.route.paramMap.destination.value.id);
+    //console.log("Details: " + this.route.paramMap.destination.value.id);
+    //console.log(this.route.url.value[1].path);
 
-    this.parkinglotService.getParkinglot(this.route.paramMap.destination.value.id).then(parkinglot => this.parkinglot = parkinglot);
+    //this.parkinglotService.getParkinglot(this.route.paramMap.destination.value.id).then(parkinglot => this.parkinglot = parkinglot);
+    this.parkinglotService.getParkinglot(this.route.url.value[1].path).then(parkinglot => this.parkinglot = parkinglot);
+
+
+
 
     // this.route.paramMap
     //   .switchMap((params: ParamMap) => this.parkinglotService.getParkinglot(+params.get('id')))
