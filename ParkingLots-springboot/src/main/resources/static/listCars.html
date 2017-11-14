@@ -1,10 +1,41 @@
-<<h1>List of cars in the database</h1>
-
+<h3>List of cars in the database</h3>
+<hr>
 <div ng-init="loadCars()">
-    <table>
-        <tr><th>ID</th><th>License plate</th><th>Colour</th><th>Parkinglot</th></tr>
-        <tr ng-repeat="car in cars">
-            <td>{{car.id}}</td><td>{{car.licensePlate}}</td><td>{{car.colour}}</td><td>{{car.parkingLot["location"]}}</td><td><button class="btn" ng-click="delete(car.id)">delete</button></td>
-        </tr>
-    </table>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm">
+                <strong>Car ID</strong>
+            </div>
+            <div class="col-sm">
+                <strong>License plate</strong>
+            </div>
+            <div class="col-sm">
+                <strong>Colour</strong>
+            </div>
+            <div class="col-sm">
+                <strong>Location</strong>
+            </div>
+            <div class="col-sm">
+                <strong>Option</strong>
+            </div>
+        </div>
+        <div class="row" ng-repeat="car in cars">
+            <div class="col-sm">
+                {{car.id}}
+            </div>
+            <div class="col-sm">
+                {{car.licensePlate}}
+            </div>
+            <div class="col-sm">
+                {{car.colour}}
+            </div>
+            <div class="col-sm">
+                {{car.parkingLot["location"]}}
+            </div>
+            <div class="col-sm">
+                <button class="btn" ng-click="delete(car.id)">delete</button>
+            </div>
+        </div>
+    </div>
 </div>
+<br>

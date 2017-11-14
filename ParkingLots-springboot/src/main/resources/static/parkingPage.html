@@ -1,0 +1,91 @@
+<h3>Add a parkinglot to the database</h3>
+<p>In this form you can declare the parking lot's id, location, capacity and parking costs.</p>
+<hr>
+<form>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm">
+                <strong>Parking Lot ID</strong>
+            </div>
+            <div class="col-sm">
+                <strong>Location</strong>
+            </div>
+            <div class="col-sm">
+                <strong>Capacity</strong>
+            </div>
+            <div class="col-sm">
+                <strong>Parking Cost</strong>
+            </div>
+            <div class="col-sm">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm">
+                <input type="number"  ng-model="parkingLot.id" id="id">
+            </div>
+            <div class="col-sm">
+                <input type="text" ng-model="parkingLot.location" id="location">
+            </div>
+            <div class="col-sm">
+                <input type="number" min="0" step="10" ng-model="parkingLot.capacity" id="capacity">
+            </div>
+            <div class="col-sm">
+                <input type="number" min="0" max="10" step="0.01" ng-model="parkingLot.parkingCost" id="parkingCost">
+            </div>
+            <div class="col-sm">
+                <button type="submit" ng-click="save()" ng-model-instant>Add Parkinglot</button>
+            </div>
+        </div>
+    </div>
+</form>
+
+<hr>
+
+<h3>List of parking lots in the database</h3>
+<hr>
+
+<div ng-init="loadParking()">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm">
+                <strong>Parking Lot ID</strong>
+            </div>
+            <div class="col-sm">
+                <strong>Location</strong>
+            </div>
+            <div class="col-sm">
+                <strong>Capacity</strong>
+            </div>
+            <div class="col-sm">
+                <strong>Parking Cost</strong>
+            </div>
+            <div class="col-sm">
+                <strong>Number of cars</strong>
+            </div>
+            <div class="col-sm">
+                <strong>Option</strong>
+            </div>
+        </div>
+        <div class="row" ng-repeat="parkinglot in parkinglots">
+            <div class="col-sm">
+                {{parkinglot.id}}
+            </div>
+            <div class="col-sm">
+                {{parkinglot.location}}
+            </div>
+            <div class="col-sm">
+                {{parkinglot.capacity}}
+            </div>
+            <div class="col-sm">
+                {{parkinglot.parkingCost}}
+            </div>
+            <div class="col-sm">
+                {{parkinglot.cars.length}}
+            </div>
+            <div class="col-sm">
+                <button class="btn" ng-click="delete(parkinglot.id)">delete</button>
+            </div>
+        </div>
+    </div>
+</div>
+<br>

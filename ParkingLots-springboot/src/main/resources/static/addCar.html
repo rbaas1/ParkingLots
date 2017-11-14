@@ -1,6 +1,6 @@
-<h1>Add a car to the database</h1>
-<h3>This will become a form to add cars to the database</h3>
-<p>In the form you can declare the car's license-plate and colour.</p>
+<h3>Add a car to the database</h3>
+<p>In this form you can declare the car's license-plate, colour and parking location.</p>
+<hr>
 <form ng-init="loadParking()">
     <div class="container">
         <div class="row">
@@ -25,8 +25,8 @@
                 <input type="color" ng-model="car.colour" id="colour">
             </div>
             <div class="col-sm">
-                <select>
-                    <option ng-repeat="parkinglot in parkinglots" value="{{parkingLot}}">
+                <select ng-model="car.parkingLot.id">
+                    <option ng-repeat="parkinglot in parkinglots" value="{{parkinglot.id}}">
                         {{parkinglot.id}} - {{parkinglot.location}}
                     </option>
                 </select>

@@ -1,23 +1,51 @@
-<h1>View a car's details from the database</h1>
-<h3>This will become a form to search cars in the database</h3>
-
+<h3>View a car's details from the database</h3>
+<hr>
 <form>
-    <table>
-        <tr>
-            <th>Search by license plate</th>
-        </tr>
-        <tr>
-            <td><input type="text" maxlength="8" ng-model="licensePlate" id="searchPlate"></td>
-        </tr>
-    </table>
-    <button type="submit" ng-click="searchByPlate(licensePlate)">Search Car</button>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm">
+                <strong>Search by license plate:</strong>
+            </div>
+            <div class="col-sm">
+                <input type="text" maxlength="8" ng-model="licensePlate" id="searchPlate">
+            </div>
+            <div class="col-sm">
+                <button type="submit" ng-click="searchByPlate(licensePlate)">Search Car</button>
+            </div>
+        </div>
+    </div>
 </form>
 
-<div>
-    <table>
-        <tr><th>ID</th><th>License plate</th><th>Colour</th><th>Parkinglot</th></tr>
-        <tr ng-repeat="car in cars">
-            <td>{{car.id}}</td><td>{{car.licensePlate}}</td><td>{{car.colour}}</td><td>{{car.parkingLot["location"]}}</td>
-        </tr>
-    </table>
+<hr>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm">
+            <strong>Car ID</strong>
+        </div>
+        <div class="col-sm">
+            <strong>License plate</strong>
+        </div>
+        <div class="col-sm">
+            <strong>Colour</strong>
+        </div>
+        <div class="col-sm">
+            <strong>Location</strong>
+        </div>
+    </div>
+    <div class="row" ng-repeat="car in cars">
+        <div class="col-sm">
+            {{car.id}}
+        </div>
+        <div class="col-sm">
+            {{car.licensePlate}}
+        </div>
+        <div class="col-sm">
+            {{car.colour}}
+        </div>
+        <div class="col-sm">
+            {{car.parkingLot["location"]}}
+        </div>
+    </div>
 </div>
+

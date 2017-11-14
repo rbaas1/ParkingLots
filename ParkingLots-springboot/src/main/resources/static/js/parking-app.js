@@ -16,6 +16,10 @@ app.config(function($routeProvider) {
     .when("/listCars", {
         templateUrl : "listCars.html",
         controller : "viewCarCtrl"
+    })
+    .when("/parkingPage", {
+            templateUrl : "parkingPage.html",
+            controller : "parkingLotCtrl"
     });
 });
 
@@ -27,6 +31,7 @@ app.controller("addCarCtrl", function ($scope, $http) {
         console.log('saving');
 
         $http.post('api/new/car', angular.toJson($scope.car)).then(function () {
+                console.log($scope.car.parkingLot);
             	console.log('saved!' + $scope.car.licensePlate);
             	$scope.msg = "Added " + $scope.car.licensePlate;
             });
@@ -89,5 +94,41 @@ app.controller("viewCarCtrl", function ($scope, $http) {
               catch(handleError);
         };
 
-   $scope.msg = "I want to know all abaout cars";
+   $scope.msg = "I want to know all about this car";
+});
+
+app.controller("parkingLotCtrl", function ($scope, $http) {
+
+    $scope.msg = "";
+
+    $scope.save = function ()  {
+        console.log('saving parking');
+
+        $http.post('api/new/parkinglot', angular.toJson($scope.parkingLot)).then(function () {
+                console.log('saved!' + $scope.parkingLot.location);
+            	$scope.msg = "Added " + $scope.parkingLot.location;
+            });
+      };
+
+    $scope.loadParking = function ()  {
+            console.log('loading parking');
+            function handleSuccess(response){
+                 $scope.parkinglots = response.data;
+               }
+
+            function handleError(response) {
+                  // handle errors
+               }
+
+            $http.get('api/parkinglot/all').
+              then(handleSuccess).
+              catch(handleError);
+        };
+
+    $scope.delete = function (id)  {
+            console.log('deleting');
+            $http.delete("api/parkinglot/" + id).then(function () {
+            	$scope.loadParking();
+            });
+        };
 });
