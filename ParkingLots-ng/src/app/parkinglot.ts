@@ -1,11 +1,11 @@
 export class Parkinglot {
 
-  constructor(id: number, location: string, capacity: number, parkingcost: number) {
+  constructor(id: number, location: string, capacity: number, parkingCost: number) {
 
   }
 
   id: number;
   licensePlate: string;
   capacity: number;
-  parkingcost: number;
+  parkingCost: number;
 }

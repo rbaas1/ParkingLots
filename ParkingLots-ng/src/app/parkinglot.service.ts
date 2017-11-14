@@ -45,12 +45,9 @@ export class ParkinglotService {
       "id": id,
       "location": location,
       "capacity": capacity,
-      "parkeerkosten": cost
+      "parkingCost": cost
     }
-
-    console.log("service:");
-    console.log(body);
-
+    
     return this.http.post('/api/new/parkinglot/', body)
       .toPromise()
       .then(resp => {return})

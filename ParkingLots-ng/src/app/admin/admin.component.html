@@ -33,6 +33,61 @@
 </div>
 
 
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+      <strong><i class="fa fa-info"></i> ID</strong>
+    </div>
+    <div class="col-sm">
+      <strong><i class="fa fa-car"></i> License Plate</strong>
+    </div>
+    <div class="col-sm">
+      <strong><i class="fa fa-paint-brush"></i> Colour</strong>
+    </div>
+    <div class="col-sm">
+      <strong><i class="fa fa-map"></i> Parked in</strong>
+    </div>
+    <div class="col-sm">
+      <strong><i class="fa fa-gear"></i> Options</strong>
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="row" *ngFor="let car of cars" [attr.id]="'Car'+car.id">
+    <div class="col-sm">
+      {{car.id}}
+    </div>
+    <div class="col-sm">
+      <input type="text" [(ngModel)]="car.licensePlate" placeholder="licensePlate" />
+    </div>
+    <div class="col-sm">
+      <input type="color" [(ngModel)]="car.colour" placeholder="colour" />
+    </div>
+    <div class="col-sm">
+      <select [(ngModel)]="car.parkingLot.id"><option *ngFor="let parkinglot of parkinglots" [ngValue]="parkinglot.id">{{parkinglot.location}}</option></select>
+    </div>
+    <div class="col-sm">
+      <button type="button" class="btn btn-danger" (click)="deleteCar(car.id)"><i class="fa fa-trash"></i></button>
+      <button type="button" class="btn btn-success" (click)="updateCar(car.id, car.licensePlate, car.colour, car.parkingLot.id)"><i class="fa fa-save"></i></button>
+    </div>
+  </div>
+
+  <hr>
+
+  
+
+
+
+</div>
+
+
+
+
+
+
 <h2>Parking Lots</h2>
 
 <div class="container">
