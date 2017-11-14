@@ -12,7 +12,7 @@ public class ParkingLot {
     private int id;
     private String location;
     private int capacity;
-    private double parkeerkosten;
+    private double parkingCost;
 
     @OneToMany(mappedBy = "parkingLot", cascade = CascadeType.ALL)
     @JsonIgnoreProperties("parkingLot")
@@ -21,11 +21,11 @@ public class ParkingLot {
     public ParkingLot() {
     }
 
-    public ParkingLot(int id, String location, int capacity, double parkeerkosten, Set<Car> cars) {
+    public ParkingLot(int id, String location, int capacity, double parkingCost, Set<Car> cars) {
         this.id = id;
         this.location = location;
         this.capacity = capacity;
-        this.parkeerkosten = parkeerkosten;
+        this.parkingCost = parkingCost;
         this.cars = cars;
     }
 
@@ -53,12 +53,12 @@ public class ParkingLot {
         this.capacity = capacity;
     }
 
-    public double getParkeerkosten() {
-        return parkeerkosten;
+    public double getParkingCost() {
+        return parkingCost;
     }
 
-    public void setParkeerkosten(double parkeerkosten) {
-        this.parkeerkosten = parkeerkosten;
+    public void setParkingCost(double parkingCost) {
+        this.parkingCost = parkingCost;
     }
 
     public Set<Car> getCars() {
@@ -75,6 +75,8 @@ public class ParkingLot {
                 "id=" + id +
                 ", location='" + location + '\'' +
                 ", capacity=" + capacity +
+                ", parkingCost=" + parkingCost +
+                ", cars=" + cars +
                 '}';
     }
 }

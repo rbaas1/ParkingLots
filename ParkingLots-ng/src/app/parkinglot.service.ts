@@ -45,7 +45,7 @@ export class ParkinglotService {
       "id": id,
       "location": location,
       "capacity": capacity,
-      "parkeerkosten": cost
+      "parkingCost": cost
     }
 
     console.log(body);
