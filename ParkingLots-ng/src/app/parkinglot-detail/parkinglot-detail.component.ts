@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, ParamMap } from '@angular/router';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { Location }                 from '@angular/common';
 
 import { Parkinglot } from '../parkinglot';
@@ -16,15 +16,23 @@ export class ParkinglotDetailComponent implements OnInit {
   constructor(
     private parkinglotService: ParkinglotService,
     private route: ActivatedRoute,
+    private router: Router,
     private location: Location
   ) { }
 
   ngOnInit() {
     //console.log("Details: " + this.route.paramMap.destination.value.id);
-    //console.log(this.route.url.value[1].path);
+    //console.log(this.router.url);
+    var url = this.router.url;
+    //console.log(url.substring(12));
+    url = url.substring(12);
+
+    this.parkinglotService.getParkinglot(Number(url)).then(parkinglot => this.parkinglot = parkinglot);
+
+    //console.log(this.route.paramMap.destination.value.id);
 
     //this.parkinglotService.getParkinglot(this.route.paramMap.destination.value.id).then(parkinglot => this.parkinglot = parkinglot);
-    this.parkinglotService.getParkinglot(this.route.url.value[1].path).then(parkinglot => this.parkinglot = parkinglot);
+    //this.parkinglotService.getParkinglot(this.route.url.value[1].path).then(parkinglot => this.parkinglot = parkinglot);
 
 
 
