@@ -84,19 +84,22 @@
       <h3>Parking Lots</h3>
       <hr>
       <div class="row">
-          <div class="col-sm">
+          <div class="col-sm-2">
             <strong><i class="fa fa-info"></i> ID</strong>
           </div>
-          <div class="col-sm">
+          <div class="col-sm-2">
             <strong><i class="fa fa-map"></i> Location</strong>
           </div>
-          <div class="col-sm">
+          <div class="col-sm-2">
             <strong><i class="fa fa-car"></i> Capacity</strong>
           </div>
-          <div class="col-sm">
+          <div class="col-sm-2">
+            <strong><i class="fa fa-car"></i> Occupancy</strong>
+          </div>
+          <div class="col-sm-2">
             <strong><i class="fa fa-money"></i> Parking Cost</strong>
           </div>
-          <div class="col-sm">
+          <div class="col-sm-2">
             <strong><i class="fa fa-gear"></i></strong>
           </div>
       </div>
@@ -104,19 +107,22 @@
       <hr>
 
       <div class="row" *ngFor="let parkinglot of parkinglots" >
-        <div class="col-sm">
-          <input type="number" size="4" [(ngModel)]="parkinglot.id" disabled />
+        <div class="col-sm-2">
+          <input type="number" [(ngModel)]="parkinglot.id" disabled />
         </div>
-        <div class="col-sm">
+        <div class="col-sm-2">
           <input type="text" [(ngModel)]="parkinglot.location" />
         </div>
-        <div class="col-sm">
-          <input type="number" min="0" step="10" size="8" [(ngModel)]="parkinglot.capacity" />
+        <div class="col-sm-2">
+          <input type="number" min="0" step="10" [(ngModel)]="parkinglot.capacity" />
         </div>
-        <div class="col-sm">
-          <input type="number" min="0" max="10" step="0.01" size="6" [(ngModel)]="parkinglot.parkingCost" />
+        <div class="col-sm-2">
+          {{parkinglot.cars.length}} cars parked
         </div>
-        <div class="col-sm">
+        <div class="col-sm-2">
+          <input type="number" min="0" max="10" step="0.01" [(ngModel)]="parkinglot.parkingCost" />
+        </div>
+        <div class="col-sm-2">
           <button *ngIf="validateDeleteParkinglot(parkinglot.id,parkinglot.cars.length)" type="button" class="btn btn-danger" (click)="deleteParkinglot(parkinglot.id)"><i class="fa fa-trash"></i></button>
           <button *ngIf="parkinglot.id!=0" type="button" class="btn btn-success" (click)="makeParkinglot(parkinglot.id, parkinglot.location, parkinglot.capacity, parkinglot.parkingCost)"><i class="fa fa-save"></i></button>
         </div>
@@ -125,19 +131,22 @@
       <hr>
 
       <div class="row">
-          <div class="col-sm">
-            <input type="number" min="1" step="1" [(ngModel)]="lotId" placeholder="1" size="4"/>
+          <div class="col-sm-2">
+            <input type="number" min="1" step="1" [(ngModel)]="lotId" placeholder="1" />
           </div>
-          <div class="col-sm">
+          <div class="col-sm-2">
             <input type="text" [(ngModel)]="lotLocation" placeholder="Location"/>
           </div>
-          <div class="col-sm">
-            <input type="number" min="0" step="10" [(ngModel)]="lotCapacity" placeholder="0" size="8" />
+          <div class="col-sm-2">
+            <input type="number" min="0" step="10" [(ngModel)]="lotCapacity" placeholder="0"  />
           </div>
-          <div class="col-sm">
-            <input type="number" min="0" max="10" step="0.01" [(ngModel)]="lotParkingcost" placeholder="0.01" size="6"/>
+          <div class="col-sm-2">
+            No cars yet
           </div>
-          <div class="col-sm">
+          <div class="col-sm-2">
+            <input type="number" min="0" max="10" step="0.01" [(ngModel)]="lotParkingcost" placeholder="0.01" />
+          </div>
+          <div class="col-sm-2">
             <button *ngIf="!existsParkinglot(lotId)" type="button" class="btn btn-success" (click)="makeParkinglot(lotId, lotLocation, lotCapacity, lotParkingcost)"><i class="fa fa-map"></i><strong>+</strong></button>
           </div>
       </div>
