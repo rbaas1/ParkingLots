@@ -28,6 +28,7 @@ export class SimulationComponent implements OnInit {
 
   cash: number = 0.00;
   cashflow: number = 0.00;
+  waitingCars: number = 0;
 
   day: number = 0;
   hour: number = 0;
@@ -43,6 +44,7 @@ export class SimulationComponent implements OnInit {
     this.parkinglotService.getParkinglots().then(parkinglots => this.parkinglots = parkinglots).then(resp => this.createSimulatedParkinglots());
   }
 
+
   addCash(n: number){
     console.log("Got cash: $" + n);
     this.cash += n;
@@ -51,6 +53,10 @@ export class SimulationComponent implements OnInit {
 
   leaveCar(car: Car){
     this.admin.updateCar(car.id, car.licensePlate, car.colour, 0);
+
+    this.simulatedCars = this.simulatedCars.filter(item => item.id !== car.id);
+
+    this.waitingCars++;
   }
 
   start(){
@@ -98,7 +104,7 @@ export class SimulationComponent implements OnInit {
       this.simulatedCars.push(t);
 
       // t.printId();
-      // console.log(t);
+      //console.log("Created car: " + t.id + " - parkinglot id: " + t.parkingLot.id);
 
     }
 
@@ -119,6 +125,7 @@ export class SimulationComponent implements OnInit {
       // console.log(t);
 
     }
+    this.waitingCars = this.parkinglots[0].cars.length;
 
   }
 
