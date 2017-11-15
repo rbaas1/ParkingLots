@@ -13,7 +13,7 @@
     </div>
     <div class="col-sm">
       <div class="alert alert-success container-fluid" role="alert">
-        <i class="fa fa-money"></i> ${{cash}}
+        <i class="fa fa-money"></i> ${{cash.toFixed(2)}}
       </div>
     </div>
     <div class="col-sm">
@@ -23,7 +23,7 @@
     </div>
     <div class="col-sm">
       <div class="alert alert-warning container-fluid" role="alert">
-        <i class="fa fa-car"></i> 1 car waiting
+        <i class="fa fa-car"></i> {{waitingCars}} cars waiting
       </div>
     </div>
   </div>
@@ -35,13 +35,45 @@
       Simulating hours, days
     </div>
     <div class="col-sm">
-      Cashflow: $0.00 per hour
+      Cashflow: ${{cashflow.toFixed(2)}} per hour
     </div>
-    <div class="col-sm">
-      Buy parking lot!
+    <div class="col-sm text-right">
+
+
+      <div *ngFor="let parkinglot of simulatedParkinglots">
+
+        <a *ngIf="parkinglot.id!=0" class="btn btn-light btn-sm" data-toggle="collapse" href="#collapseExample{{parkinglot.id}}" aria-expanded="false" aria-controls="collapseExample">
+          {{parkinglot.location}} <i class="fa fa-map"></i>
+        </a>
+        <div class="collapse" id="collapseExample{{parkinglot.id}}">
+          <div class="card card-body">
+
+            <div class="row">
+              <div *ngFor="let car of simulatedCars" [attr.id]="'Car'+car.id">
+                  <button *ngIf="car.parkingLot.id == parkinglot.id" type="button" class="btn btn-light btn-sm"><font color="{{car.colour}}"><i class="fa fa-car"></i></font></button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+
+
+
     </div>
+
     <div class="col-sm">
-      Park car!
+
+
+      <div class="row">
+        <div *ngFor="let car of simulatedCars" [attr.id]="'Car'+car.id">
+            <button *ngIf="car.parkingLot.id == 0" type="button" class="btn btn-light btn-sm"><font color="{{car.colour}}"><i class="fa fa-car"></i></font></button>
+        </div>
+      </div>
+
+
     </div>
   </div>
 </div>
@@ -60,3 +92,5 @@ Parking lots
 Cars waiting to park
 Buy lots
 </p>
+
+<p>TODO: als een auto vertrekt, deze uit de simulatedCars lijst gooien, en deze naar lot 0 verplaatsen in de database.</p>
