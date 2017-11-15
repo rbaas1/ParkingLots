@@ -62,7 +62,7 @@
         </div>
       </div>
 
-      
+
 
     </div>
 
@@ -117,7 +117,7 @@
           <input type="number" min="0" max="10" step="0.01" size="6" [(ngModel)]="parkinglot.parkingCost" />
         </div>
         <div class="col-sm">
-          <button *ngIf="parkinglot.id!=0" type="button" class="btn btn-danger" (click)="deleteParkinglot(parkinglot.id)"><i class="fa fa-trash"></i></button>
+          <button *ngIf="validateDeleteParkinglot(parkinglot.id,parkinglot.cars.length)" type="button" class="btn btn-danger" (click)="deleteParkinglot(parkinglot.id)"><i class="fa fa-trash"></i></button>
           <button *ngIf="parkinglot.id!=0" type="button" class="btn btn-success" (click)="makeParkinglot(parkinglot.id, parkinglot.location, parkinglot.capacity, parkinglot.parkingCost)"><i class="fa fa-save"></i></button>
         </div>
       </div>

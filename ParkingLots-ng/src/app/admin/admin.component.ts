@@ -36,6 +36,13 @@ export class AdminComponent implements OnInit {
 
   }
 
+  validateDeleteParkinglot(id: number, parkedCars: number){
+    var x=false;
+    if (id != 0) x = true;
+    if (parkedCars > 0) x = false;
+    return x;
+  }
+
   makeParkinglot(id: number, location: string, capacity: number, cost: number){
     console.log("creating parking lot " + id + " - " + location + " - " + capacity + " - " + cost);
 

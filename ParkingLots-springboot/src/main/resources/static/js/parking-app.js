@@ -108,6 +108,8 @@ app.controller("parkingLotCtrl", function ($scope, $http) {
                 console.log('saved!' + $scope.parkingLot.location);
             	$scope.msg = "Added " + $scope.parkingLot.location;
             });
+
+        location.reload(true);
       };
 
     $scope.loadParking = function ()  {
