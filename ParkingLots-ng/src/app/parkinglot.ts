@@ -10,7 +10,7 @@ export class Parkinglot {
   capacity: number;
   parkingCost: number;
   cars: Car[];
-  freeSpace: number;
+  freeSpace: number = 0;
 
   printId(){
     console.log("Parkinglot id: " + this.id);

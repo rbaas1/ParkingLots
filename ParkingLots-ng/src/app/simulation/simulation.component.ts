@@ -52,11 +52,43 @@ export class SimulationComponent implements OnInit {
   }
 
   leaveCar(car: Car){
-    this.admin.updateCar(car.id, car.licensePlate, car.colour, 0);
+    this.admin.parkCar(car, 0);
 
+    car.parkingLot = this.parkinglots[0]; //TODO: hier ging die dus fout. Ik zette eerst in cat.ts de ID van de lot direct op 0. Toen kreeg je lotId=0 voor bijv emmen. Verpestte alles.
+    //Update car in simulatedCars: first delete it, then add the updated version
     this.simulatedCars = this.simulatedCars.filter(item => item.id !== car.id);
+    this.simulatedCars.push(car);
 
     this.waitingCars++;
+
+
+  }
+
+  parkCar(car: Car, lot: number){
+
+    //TODO: redundant debugging code
+    console.log("Car " + car.id + "(" + car.parkingLot.id + ") really wants to park at lot " + lot + "--> " + this.simulatedParkinglots[lot].id);
+    var newLotId = this.parkinglots[lot].id;
+    if(newLotId == 0){
+      console.log("ERROR!!! simLotId: " + newLotId + ", expected: " + lot);
+      console.log(car.parkingLot);
+      console.log("-----------");
+      this.stop();
+    }
+
+
+    car.parkingLot = this.parkinglots[lot];
+
+    this.admin.parkCar(car, lot);
+
+    // Update car in simulatedCars: first delete it, then add the updated version
+    this.simulatedCars = this.simulatedCars.filter(item => item.id !== car.id);
+    this.simulatedCars.push(car);
+
+    this.waitingCars--;
+
+    console.log("Car " + car.id + "(" + car.parkingLot.id + ") parked at lot " + lot);
+
   }
 
   start(){
@@ -90,7 +122,6 @@ export class SimulationComponent implements OnInit {
 
   nextDay(){
     this.day++;
-    //this.addCash(0.93);
   }
 
 
@@ -102,9 +133,6 @@ export class SimulationComponent implements OnInit {
       var t = Object.assign(new Car(null,null,null,null), c);
       t.setSimComponent(this);
       this.simulatedCars.push(t);
-
-      // t.printId();
-      //console.log("Created car: " + t.id + " - parkinglot id: " + t.parkingLot.id);
 
     }
 
@@ -120,9 +148,6 @@ export class SimulationComponent implements OnInit {
       this.simulatedParkinglots.push(t);
 
       this.cashflow += t.parkingCost * t.cars.length;
-
-      // t.printId();
-      // console.log(t);
 
     }
     this.waitingCars = this.parkinglots[0].cars.length;

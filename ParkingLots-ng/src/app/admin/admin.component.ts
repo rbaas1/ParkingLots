@@ -57,6 +57,10 @@ export class AdminComponent implements OnInit {
     this.carService.saveCar(this.generateLicensePlate(), this.generateColour()).then(resp => this.ngOnInit());
   }
 
+  parkCar(car: Car, parkingLot: number){
+    this.updateCar(car.id, car.licensePlate, car.colour, parkingLot);
+  }
+
   updateCar(id: number, licensePlate: string, colour: string, parkingLot: number){
     this.carService.updateCar(id, licensePlate, colour, parkingLot).then(resp => this.ngOnInit());
   }

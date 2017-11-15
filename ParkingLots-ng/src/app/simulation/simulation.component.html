@@ -40,7 +40,7 @@
     <div class="col-sm text-right">
 
 
-      <div *ngFor="let parkinglot of simulatedParkinglots">
+      <div *ngFor="let parkinglot of parkinglots">
 
         <a *ngIf="parkinglot.id!=0" class="btn btn-light btn-sm" data-toggle="collapse" href="#collapseExample{{parkinglot.id}}" aria-expanded="false" aria-controls="collapseExample">
           {{parkinglot.location}} <i class="fa fa-map"></i>
@@ -92,5 +92,3 @@ Parking lots
 Cars waiting to park
 Buy lots
 </p>
-
-<p>TODO: als een auto vertrekt, deze uit de simulatedCars lijst gooien, en deze naar lot 0 verplaatsen in de database.</p>
