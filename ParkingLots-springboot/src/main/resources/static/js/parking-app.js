@@ -131,4 +131,12 @@ app.controller("parkingLotCtrl", function ($scope, $http) {
             	$scope.loadParking();
             });
         };
+
+    $scope.valdellot = function (id, length) {
+            console.log('validating lot:' + id + ', with length: ' + length);
+            var x = false;
+            if (id != 0) x = true;
+            if (length > 0) x = false;
+            return x;
+            }
 });

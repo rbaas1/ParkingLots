@@ -83,7 +83,7 @@
                 {{parkinglot.cars.length}}
             </div>
             <div class="col-sm">
-                <button class="btn" ng-click="delete(parkinglot.id)">delete</button>
+                <button class="btn" ng-if="valdellot(parkinglot.id, parkinglot.cars.length)" ng-click="delete(parkinglot.id)">delete</button>
             </div>
         </div>
     </div>
