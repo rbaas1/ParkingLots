@@ -109,7 +109,7 @@ app.controller("parkingLotCtrl", function ($scope, $http) {
             	$scope.msg = "Added " + $scope.parkingLot.location;
             });
 
-        location.reload(true);
+        $scope.loadParking();
       };
 
     $scope.loadParking = function ()  {
@@ -141,4 +141,5 @@ app.controller("parkingLotCtrl", function ($scope, $http) {
             if (length > 0) x = false;
             return x;
             }
+
 });
