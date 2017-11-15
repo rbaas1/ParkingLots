@@ -13,7 +13,7 @@
     </div>
     <div class="col-sm">
       <div class="alert alert-success container-fluid" role="alert">
-        <i class="fa fa-money"></i> ${{cash}}
+        <i class="fa fa-money"></i> ${{cash.toFixed(2)}}
       </div>
     </div>
     <div class="col-sm">
@@ -35,7 +35,7 @@
       Simulating hours, days
     </div>
     <div class="col-sm">
-      Cashflow: $0.00 per hour
+      Cashflow: ${{cashflow.toFixed(2)}} per hour
     </div>
     <div class="col-sm">
       Buy parking lot!
@@ -60,3 +60,5 @@ Parking lots
 Cars waiting to park
 Buy lots
 </p>
+
+<p>TODO: als een auto vertrekt, deze uit de simulatedCars lijst gooien, en deze naar lot 0 verplaatsen in de database.</p>
