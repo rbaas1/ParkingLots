@@ -24,7 +24,7 @@ export class SimulationComponent implements OnInit {
   admin: AdminComponent;
 
   started = false;
-  speed: number = 1000;
+  speed: number = 100;
 
   cash: number = 0.00;
   cashflow: number = 0.00;

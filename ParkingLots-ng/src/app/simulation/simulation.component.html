@@ -1,5 +1,8 @@
 <h1>Simulation <button *ngIf="!started" type="button" class="btn btn-success" (click)="start()"><i class="fa fa-play"></i> START</button> <button *ngIf="started" type="button" class="btn btn-danger" (click)="stop()"><i class="fa fa-stop"></i> STOP</button>
 </h1>
+<div class="container">
+Simulation speed: <input *ngIf="!started" type="number" size="8" min="100" step="100" [(ngModel)]="speed" /><input *ngIf="started" type="number" size="8" min="100" step="100" [(ngModel)]="speed" disabled />
+</div>
 
 
 <br>

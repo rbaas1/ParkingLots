@@ -67,7 +67,7 @@ export class Car {
         this.leaveParkingLot();
       }
     }else{
-      if(Math.random() > 0.80){
+      if(Math.random() > 0.50){
         var r = Math.floor( Math.random() * (this.simulationComponent.simulatedParkinglots.length - 1) ) + 1;
         if(r == 0){
           r = 1;
