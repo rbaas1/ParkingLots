@@ -33,7 +33,7 @@
   <div class="row">
     <div class="col-sm">
       Simulating hours & days with {{cars!=null ? cars.length : ''}} cars.<br>
-      Simulation speed: {{speed / 1000}} hour per second.
+      Simulation speed: {{1000 / speed}} hour{{1000 / speed > 1 ? 's' : s}} per second.
     </div>
     <div class="col-sm">
       Cashflow: ${{cashflow.toFixed(2)}}/hour
