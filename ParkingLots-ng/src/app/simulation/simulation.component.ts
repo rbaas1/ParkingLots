@@ -24,7 +24,7 @@ export class SimulationComponent implements OnInit {
   admin: AdminComponent;
 
   started = false;
-  speed: number = 100;
+  speed: number = 1000;
 
   cash: number = 0.00;
   cashflow: number = 0.00;
@@ -88,7 +88,7 @@ export class SimulationComponent implements OnInit {
     //   console.log("-----------");
     //   this.stop();
     // }
-    
+
 
     this.simulatedParkinglots[lot].freeSpace--;
 

@@ -63,7 +63,7 @@ export class Car {
     if(this.parkingLot.id > 0){
       //console.log("Car " + this.id + " is parked in lot number " + this.parkingLot.id + " for " + this.timeParked + " hours.");
       this.timeParked++;
-      if(Math.random() > 0.95){
+      if(Math.random() > 0.75){
         this.leaveParkingLot();
       }
     }else{
