@@ -50,7 +50,21 @@
 
             <div class="row">
               <div *ngFor="let car of simulatedCars" [attr.id]="'Car'+car.id">
-                  <button *ngIf="car.parkingLot.id == parkinglot.id" type="button" class="btn btn-light btn-sm"><font color="{{car.colour}}"><i class="fa fa-car"></i></font></button>
+                  <!-- <button *ngIf="car.parkingLot.id == parkinglot.id" type="button" class="btn btn-light btn-sm"><font color="{{car.colour}}"><i class="fa fa-car"></i></font></button> -->
+
+
+
+                  <div class="dropdown">
+                    <button *ngIf="car.parkingLot.id == parkinglot.id" type="button" class="btn btn-light btn-sm" id="id" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><font color="{{car.colour}}"><i class="fa fa-car"></i></font></button>
+
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                      <p class="dropdown-item"><i class="fa fa-info"></i> ID: {{car.id}}</p>
+                      <p class="dropdown-item"><i class="fa fa-car"></i> License plate: {{car.licensePlate}}</p>
+                      <p class="dropdown-item"><i class="fa fa-paint-brush"></i> Colour: {{car.colour}}</p>
+                    </div>
+                  </div>
+
+
               </div>
             </div>
 
@@ -69,7 +83,18 @@
 
       <div class="row">
         <div *ngFor="let car of simulatedCars" [attr.id]="'Car'+car.id">
-            <button *ngIf="car.parkingLot.id == 0" type="button" class="btn btn-light btn-sm"><font color="{{car.colour}}"><i class="fa fa-car"></i></font></button>
+            <!-- <button *ngIf="car.parkingLot.id == 0" type="button" class="btn btn-light btn-sm"><font color="{{car.colour}}"><i class="fa fa-car"></i></font></button> -->
+
+            <div class="dropdown">
+              <button *ngIf="car.parkingLot.id == 0" type="button" class="btn btn-light btn-sm" id="id" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><font color="{{car.colour}}"><i class="fa fa-car"></i></font></button>
+
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <p class="dropdown-item"><i class="fa fa-info"></i> ID: {{car.id}}</p>
+                <p class="dropdown-item"><i class="fa fa-car"></i> License plate: {{car.licensePlate}}</p>
+                <p class="dropdown-item"><i class="fa fa-paint-brush"></i> Colour: {{car.colour}}</p>
+              </div>
+            </div>
+
         </div>
       </div>
 
