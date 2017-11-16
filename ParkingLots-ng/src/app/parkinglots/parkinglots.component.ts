@@ -29,6 +29,7 @@ export class ParkinglotsComponent implements OnInit {
 
 
   determineFreeSpace(){
+    console.log("Determine free space");
     if(this.parkinglots == null) return;
     for(let p of this.parkinglots){
       p.freeSpace = p.capacity - p.cars.length;

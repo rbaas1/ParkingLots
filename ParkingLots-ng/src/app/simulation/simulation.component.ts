@@ -46,15 +46,25 @@ export class SimulationComponent implements OnInit {
 
 
   addCash(n: number){
-    console.log("Got cash: $" + n);
+    //console.log("Got cash: $" + n);
     this.cash += n;
 
   }
 
   leaveCar(car: Car){
+
+    //console.log(this.simulatedParkinglots[car.parkingLot.id]);
+    //console.log(car.parkingLot.freeSpace);
+
+    this.simulatedParkinglots[car.parkingLot.id].freeSpace++;
+
     this.admin.parkCar(car, 0);
 
     car.parkingLot = this.parkinglots[0]; //TODO: hier ging die dus fout. Ik zette eerst in cat.ts de ID van de lot direct op 0. Toen kreeg je lotId=0 voor bijv emmen. Verpestte alles.
+    //car.parkingLot.freeSpace = car.parkingLot.capacity - car.parkingLot.cars.length;
+
+    this.simulatedParkinglots[car.parkingLot.id].freeSpace--;
+
     //Update car in simulatedCars: first delete it, then add the updated version
     this.simulatedCars = this.simulatedCars.filter(item => item.id !== car.id);
     this.simulatedCars.push(car);
@@ -62,23 +72,28 @@ export class SimulationComponent implements OnInit {
     this.waitingCars++;
 
 
+
+
+
   }
 
   parkCar(car: Car, lot: number){
 
     //TODO: redundant debugging code
-    console.log("Car " + car.id + "(" + car.parkingLot.id + ") really wants to park at lot " + lot + "--> " + this.simulatedParkinglots[lot].id);
-    var newLotId = this.parkinglots[lot].id;
-    if(newLotId == 0){
-      console.log("ERROR!!! simLotId: " + newLotId + ", expected: " + lot);
-      console.log(car.parkingLot);
-      console.log("-----------");
-      this.stop();
-    }
+    // console.log("Car " + car.id + "(" + car.parkingLot.id + ") really wants to park at lot " + lot + "--> " + this.simulatedParkinglots[lot].id);
+    // var newLotId = this.parkinglots[lot].id;
+    // if(newLotId == 0){
+    //   console.log("ERROR!!! simLotId: " + newLotId + ", expected: " + lot);
+    //   console.log(car.parkingLot);
+    //   console.log("-----------");
+    //   this.stop();
+    // }
+    
 
+    this.simulatedParkinglots[lot].freeSpace--;
 
     car.parkingLot = this.parkinglots[lot];
-
+    //car.parkingLot.freeSpace = car.parkingLot.capacity - car.parkingLot.cars.length;
     this.admin.parkCar(car, lot);
 
     // Update car in simulatedCars: first delete it, then add the updated version
@@ -87,7 +102,9 @@ export class SimulationComponent implements OnInit {
 
     this.waitingCars--;
 
-    console.log("Car " + car.id + "(" + car.parkingLot.id + ") parked at lot " + lot);
+    this.simulatedParkinglots[0].freeSpace++;
+
+    //console.log("Car " + car.id + "(" + car.parkingLot.id + ") parked at lot " + lot);
 
   }
 
@@ -116,7 +133,6 @@ export class SimulationComponent implements OnInit {
     for(let car of this.simulatedCars){
       car.update();
     }
-
 
   }
 

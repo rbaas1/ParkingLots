@@ -18,7 +18,7 @@
     </div>
     <div class="col-sm">
       <div class="alert alert-primary container-fluid" role="alert">
-        <i class="fa fa-map"></i> X parking lots
+        <i class="fa fa-map"></i> {{parkinglots!=null ? parkinglots.length : ''}} parking lots
       </div>
     </div>
     <div class="col-sm">
@@ -35,15 +35,15 @@
       Simulating hours, days
     </div>
     <div class="col-sm">
-      Cashflow: ${{cashflow.toFixed(2)}} per hour
+      Cashflow: ${{cashflow.toFixed(2)}}/hour
     </div>
-    <div class="col-sm text-right">
+    <div class="col-sm">
 
 
-      <div *ngFor="let parkinglot of parkinglots">
+      <div *ngFor="let parkinglot of simulatedParkinglots">
 
         <a *ngIf="parkinglot.id!=0" class="btn btn-light btn-sm" data-toggle="collapse" href="#collapseExample{{parkinglot.id}}" aria-expanded="false" aria-controls="collapseExample">
-          {{parkinglot.location}} <i class="fa fa-map"></i>
+          <i class="fa fa-map"></i> {{parkinglot.location}} - ({{parkinglot.freeSpace}}/{{parkinglot.capacity}}) - ${{parkinglot.parkingCost.toFixed(2)}}/hour
         </a>
         <div class="collapse" id="collapseExample{{parkinglot.id}}">
           <div class="card card-body">
@@ -80,15 +80,11 @@
 
 
 
-<h1>Stuff</h1>
-<p>hour: {{hour}}, day: {{day}}</p>
-
+<!-- <h1>TODO Stuff</h1>
 
 
 <br>
-<p>Things to add:
-Cash, cost to park
-Parking lots
-Cars waiting to park
-Buy lots
-</p>
+<p>
+  Auto's moeten rekening houden met het aantal vrije parkeerplekken. Gewoon niet parkeren als die vol zit?<br>
+  Cookies om te huidige simulatie staat op te slaan en te laden.
+</p> -->

@@ -24,25 +24,36 @@ export class Car {
   leaveParkingLot(){
     //console.log("Car " + this.id + " left and paid " + (this.parkingLot.parkingCost * this.timeParked));
 
+    if(this.simulationComponent.simulatedParkinglots[0].freeSpace > 0){
+      this.simulationComponent.addCash(this.parkingLot.parkingCost * this.timeParked);
 
-    this.simulationComponent.addCash(this.parkingLot.parkingCost * this.timeParked);
+      //this.parkingLot.id = 0;
+      this.timeParked = 0;
+      this.simulationComponent.cashflow -= this.parkingLot.parkingCost;
 
-    //this.parkingLot.id = 0;
-    this.timeParked = 0;
-    this.simulationComponent.cashflow -= this.parkingLot.parkingCost;
+      //this.parkingLot.freeSpace++;
 
-    this.simulationComponent.leaveCar(this);
+      this.simulationComponent.leaveCar(this);
+    }
 
   }
 
   park(lot: number){
     //console.log("Car " + this.id + " wants to park in " + lot);
 
-    this.newParkingLot = this.simulationComponent.parkinglots[lot];
-    this.timeParked = 0;
-    this.simulationComponent.cashflow += this.newParkingLot.parkingCost;
+    if(this.simulationComponent.simulatedParkinglots[lot].freeSpace > 0){
 
-    this.simulationComponent.parkCar(this, lot);
+      this.newParkingLot = this.simulationComponent.parkinglots[lot];
+      this.timeParked = 0;
+      this.simulationComponent.cashflow += this.newParkingLot.parkingCost;
+
+      //this.newParkingLot.freeSpace--;
+
+      this.simulationComponent.parkCar(this, lot);
+
+    }
+
+
 
   }
 
