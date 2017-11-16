@@ -37,7 +37,7 @@
           <strong><i class="fa fa-map"></i> Parked in</strong>
         </div>
         <div class="col-sm">
-          <strong><i class="fa fa-gear"></i> <button type="button" class="btn btn-success" (click)="makeCar()"><i class="fa fa-car"></i> <strong>+</strong></button></strong>
+          <strong><i class="fa fa-gear"></i> <button type="button" class="btn btn-success" (click)="makeCar(numCars)"><i class="fa fa-car"></i> <strong>+</strong></button></strong> <input type="number" size="2" min="1" step="1" [(ngModel)]="numCars" placeholder="1" />
         </div>
       </div>
 

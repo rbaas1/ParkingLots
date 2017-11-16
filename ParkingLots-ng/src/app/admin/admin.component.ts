@@ -53,8 +53,12 @@ export class AdminComponent implements OnInit {
     this.parkinglotService.deleteParkinglot(id).then(parkinglots => this.parkinglots = parkinglots).then(resp => this.ngOnInit());
   }
 
-  makeCar(){
-    this.carService.saveCar(this.generateLicensePlate(), this.generateColour()).then(resp => this.ngOnInit());
+  makeCar(n: number = 1){
+    var i = 0;
+    for(i = 0; i < n; i++){
+      this.carService.saveCar(this.generateLicensePlate(), this.generateColour()).then(resp => this.ngOnInit());
+    }
+
   }
 
   parkCar(car: Car, parkingLot: number){
