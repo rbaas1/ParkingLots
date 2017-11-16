@@ -43,7 +43,7 @@
       <div *ngFor="let parkinglot of simulatedParkinglots">
 
         <a *ngIf="parkinglot.id!=0" class="btn btn-light btn-sm" data-toggle="collapse" href="#collapseExample{{parkinglot.id}}" aria-expanded="false" aria-controls="collapseExample">
-          <i class="fa fa-map"></i> {{parkinglot.location}} - ({{parkinglot.freeSpace}}/{{parkinglot.capacity}}) - ${{parkinglot.parkingCost.toFixed(2)}}/hour
+          <i class="fa fa-map"></i> {{parkinglot.location}} - ({{parkinglot.capacity - parkinglot.freeSpace}}/{{parkinglot.capacity}}) - ${{parkinglot.parkingCost.toFixed(2)}}/hour
         </a>
         <div class="collapse" id="collapseExample{{parkinglot.id}}">
           <div class="card card-body">
