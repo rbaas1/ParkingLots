@@ -108,19 +108,19 @@
 
       <div class="row" *ngFor="let parkinglot of parkinglots" >
         <div class="col-sm-2">
-          <input type="number" [(ngModel)]="parkinglot.id" disabled />
+          {{parkinglot.id}}
         </div>
         <div class="col-sm-2">
           <input type="text" [(ngModel)]="parkinglot.location" />
         </div>
         <div class="col-sm-2">
-          <input type="number" min="0" step="10" [(ngModel)]="parkinglot.capacity" />
+          <input type="number" size="8" min="0" step="10" [(ngModel)]="parkinglot.capacity" />
         </div>
         <div class="col-sm-2">
           {{parkinglot.cars.length}} cars parked
         </div>
         <div class="col-sm-2">
-          <input type="number" min="0" max="10" step="0.01" [(ngModel)]="parkinglot.parkingCost" />
+          <input type="number" size="6" min="0" max="10" step="0.01" [(ngModel)]="parkinglot.parkingCost" />
         </div>
         <div class="col-sm-2">
           <button *ngIf="validateDeleteParkinglot(parkinglot.id,parkinglot.cars.length)" type="button" class="btn btn-danger" (click)="deleteParkinglot(parkinglot.id)"><i class="fa fa-trash"></i></button>
@@ -132,19 +132,19 @@
 
       <div class="row">
           <div class="col-sm-2">
-            <input type="number" min="1" step="1" [(ngModel)]="lotId" placeholder="1" />
+            <input type="number" size="4" min="1" step="1" [(ngModel)]="lotId" placeholder="1" />
           </div>
           <div class="col-sm-2">
             <input type="text" [(ngModel)]="lotLocation" placeholder="Location"/>
           </div>
           <div class="col-sm-2">
-            <input type="number" min="0" step="10" [(ngModel)]="lotCapacity" placeholder="0"  />
+            <input type="number" size="8" min="0" step="10" [(ngModel)]="lotCapacity" placeholder="0"  />
           </div>
           <div class="col-sm-2">
             No cars yet
           </div>
           <div class="col-sm-2">
-            <input type="number" min="0" max="10" step="0.01" [(ngModel)]="lotParkingcost" placeholder="0.01" />
+            <input type="number" size="6" min="0" max="10" step="0.01" [(ngModel)]="lotParkingcost" placeholder="0.01" />
           </div>
           <div class="col-sm-2">
             <button *ngIf="!existsParkinglot(lotId)" type="button" class="btn btn-success" (click)="makeParkinglot(lotId, lotLocation, lotCapacity, lotParkingcost)"><i class="fa fa-map"></i><strong>+</strong></button>
