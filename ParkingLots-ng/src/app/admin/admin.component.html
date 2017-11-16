@@ -111,7 +111,7 @@
           {{parkinglot.id}}
         </div>
         <div class="col-sm-2">
-          <input type="text" [(ngModel)]="parkinglot.location" />
+          <input type="text" size="8" [(ngModel)]="parkinglot.location" />
         </div>
         <div class="col-sm-2">
           <input type="number" size="8" min="0" step="10" [(ngModel)]="parkinglot.capacity" />
@@ -135,7 +135,7 @@
             <input type="number" size="4" min="1" step="1" [(ngModel)]="lotId" placeholder="1" />
           </div>
           <div class="col-sm-2">
-            <input type="text" [(ngModel)]="lotLocation" placeholder="Location"/>
+            <input type="text" size="8" [(ngModel)]="lotLocation" placeholder="Location"/>
           </div>
           <div class="col-sm-2">
             <input type="number" size="8" min="0" step="10" [(ngModel)]="lotCapacity" placeholder="0"  />
